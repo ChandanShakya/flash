@@ -111,18 +111,27 @@ include_once("menu.php");
             // Generate new table
             let tableHTML = '<h2>Top CPM Results</h2>';
             tableHTML += '<table border="2">';
-            tableHTML += '<tr><th>Result ID</th><th>Record Saved Date</th><th>Level</th><th>W.P.M</th><th>Errors</th><th>C.P.M</th><th>Delete</th><th>Download</th></tr>';
+            tableHTML += '<tr>';
+            // tableHTML += '<th>Result ID</th>';
+            // tableHTML += '<th>Record Saved Date</th>';
+            // tableHTML += '<th>Level</th>';
+            // tableHTML += '<th>W.P.M</th>';
+            // tableHTML += '<th>Errors</th>';
+            tableHTML += '<th>C.P.M</th>';
+            // tableHTML += '<th>Delete</th>';
+            // tableHTML += '<th>Download</th>';
+            tableHTML += '</tr>';
 
             data.forEach(function(item) {
                 tableHTML += '<tr>';
-                tableHTML += '<td>' + item.result_id + '</td>';
-                tableHTML += '<td>' + item.date + '</td>';
-                tableHTML += '<td>' + item.level + '</td>';
-                tableHTML += '<td>' + item.wpm + '</td>';
-                tableHTML += '<td>' + item.mistake + '</td>';
+                // tableHTML += '<td>' + item.result_id + '</td>';
+                // tableHTML += '<td>' + item.date + '</td>';
+                // tableHTML += '<td>' + item.level + '</td>';
+                // tableHTML += '<td>' + item.wpm + '</td>';
+                // tableHTML += '<td>' + item.mistake + '</td>';
                 tableHTML += '<td>' + item.cpm + '</td>';
-                tableHTML += '<td><a href="delete_rec.php?r_id=' + item.result_id + '" id="btn"><i class="fa-solid fa-trash"></i></a></td>';
-                tableHTML += '<td><a href="download.php?resu=' + item.result_id + '" id="btn1"><i class="fa-solid fa-file-arrow-down"></i></a></td>';
+                // tableHTML += '<td><a href="delete_rec.php?r_id=' + item.result_id + '" id="btn"><i class="fa-solid fa-trash"></i></a></td>';
+                // tableHTML += '<td><a href="download.php?resu=' + item.result_id + '" id="btn1"><i class="fa-solid fa-file-arrow-down"></i></a></td>';
                 tableHTML += '</tr>';
             });
 
