@@ -1,0 +1,132 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Poppins", sans-serif;
+}
+
+header {
+	position: sticky;
+	margin: 0;
+	top: 0;
+	z-index: 10;
+	background-color: #aa0707;
+	height: 80px;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+header .logo {
+	padding: 10px 100px;
+	position: relative;
+	line-height: 50px;
+	color: yellow;
+	height: 70px;
+	font-size: 35px;
+	font-weight: bold;
+	cursor: pointer;
+}
+header .logo a{
+	text-decoration:none;
+	color:yellow;
+}
+header .logo a:hover{
+	background-color:#0b5510;
+}
+
+header ul {
+	float: right;
+	margin-right: 20px;
+}
+
+header ul li {
+	padding: 0 10px;
+	margin: 0 5px;
+	line-height: 80px;
+	list-style: none;
+	display: inline-block;
+}
+
+header ul li a {
+	color: white;
+	font-size: 17px;
+	text-transform: uppercase;
+	padding: 7px 13px;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+header ul li a .resize, a:hover {
+	background-color:white;
+	color: black;
+	transition: .5s;
+}
+
+.checkbtn {
+	font-size: 30px;
+	color:white;
+	line-height: 80px;
+	padding:20px;
+	cursor: pointer;
+	display: none;
+}
+
+#check {
+	display: none;
+}
+
+@media screen and (min-width: 870px) and (max-width: 1025px) {
+	header ul li a {
+		font-size: 16px;
+	}
+	header .logo {
+		padding: 10px 50px;
+		font-size:25px;
+	}
+}
+
+@media(max-width:870px) {
+	.checkbtn {
+		display: block;
+	}
+
+	header ul {
+		position: fixed;
+		width: 100%;
+		height: 100vh;
+		background: #0b5510;
+		top: 80px;
+		left: -100%;
+		text-align: center;
+		transition: all .5s;
+	}
+
+	header ul li {
+		display: block;
+		margin: 50px 0;
+		line-height: 30px;
+	}
+
+	header ul li a {
+		font-size: 20px;
+	}
+
+	header ul li a:hover, a .resize {
+		background: none;
+		background-color: white;
+		color: black;
+	}
+	#check{
+		padding:10px;
+	}
+	#check:checked~ul {
+		left: 0;
+	}
+	header .logo {
+		font-size:20px;
+	}
+}

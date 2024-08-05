@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+section {
+    margin-top: 7%;
+    padding:20px;
+}
+
+#msg {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 2px solid #ccc;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#uinfo {
+    margin-top: 20px;
+    margin: 0 auto;
+    width: 400px;
+    text-align: center;
+    border: 2px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#uinfo a{
+    display: inline-block;
+    text-decoration: none;
+    color:white;
+    border: none; 
+    margin: 0 5px;
+    cursor: pointer; 
+    background-color: #0b5510;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 6px 12px; 
+}
+
+#res_table table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    padding:10px;
+}
+
+#res_table th, #res_table td {
+    padding: 8px;
+    text-align: center;
+}
+
+#res_table th {
+    background-color: #f2f2f2;
+}
+
+#res_table {
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-x: auto;
+}
+
+#res_table h2 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#res_table a {
+    display: inline-block;
+    text-decoration: none;
+    color:white;
+    border: none; 
+    margin: 0 5px;
+    cursor: pointer; 
+    background-color: #0b5510;
+    font-size: 16px;
+    border-radius: 4px;
+    padding: 6px 12px; 
+}
+
+#res_table a:hover {
+    color: black;
+}
+@media (max-width: 630px) {   
+    #res_table table
+    {
+        width: 80%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        padding:10px;
+    }
+    #res_table th, #res_table td {
+        padding: 5px;
+        font-size: 10px;
+    }
+    #res_table h2 {
+        font-size: 20px;
+    }
+    #uinfo {
+        width: 200px;
+        padding: 10px;
+        margin: 0 auto;
+    }
+    #uinfo a{
+        font-size: 13px;
+    }
+    #uinfo p{
+    font-size: 12px;
+    }
+    #uinfo h1{
+        font-size: 15px;
+        }
+}

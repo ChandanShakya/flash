@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: black;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.main {
+    background-color: gainsboro;
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section .side {
+    background: url(green.png) no-repeat;
+    background-size: 100% 102%;
+}
+
+.side img {
+    width: 60%;
+    max-width: 60%;
+}
+
+.m_container {
+    max-width: 400px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.separator {
+    width: 150px;
+    height: 5px;
+    background-color: green;
+    margin: 20px auto 20px auto;
+}
+
+.message {
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 28px;
+    margin-bottom: 30px;
+    color: grey;
+}
+
+.lform {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.control {
+    width: 100%;
+    position: relative;
+    margin-bottom: 24px;
+}
+
+input, .submit {
+    border: none;
+    outline: none;
+    background-color: #0b5510;
+    border-radius: 30px;
+    font-size: 1.1em;
+}
+
+input {
+    width: 100%;
+    background: white;
+    color: #0b5510;
+    letter-spacing: 0.5px;
+    padding: 14px 64px;
+}
+
+input~i {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: color 0.4s;
+}
+
+.submit {
+    color: white;
+    /* padding: 14px 64px; */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.4s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.main .link {
+    margin: 20px auto 0 auto;
+    text-align: center;
+}
+
+.main .link a {
+    text-align: center;
+    cursor: pointer;
+    color: #0b5510;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.main .link a:hover {
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+#error1 {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+}
+
+#error2 {
+    color: red;
+    font-size: 14px;
+    margin: 0;
+    overflow: hidden;
+}
+.main .forgot{
+    margin:15px auto 0 auto;
+    text-align: center;
+}
+.main .forgot a{
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #0b5510;
+}
+.main .forgot a:hover{
+    text-transform: uppercase;
+}
+@media(max-width: 780px) {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .side {
+        display: none;
+    }
+    .main {
+        background-color: gainsboro;
+        border-radius:20px ;
+        padding:10px;
+        margin:10px;
+    }
+    .m_container {
+        padding: 5px;
+    }
+    .title {
+        font-size: 2em;
+    }
+    .lform {
+        width: 80%;
+        padding: 5px;
+    }
+    .submit {
+        font-size: 1em;
+        letter-spacing: 1px;
+        
+    }
+}
