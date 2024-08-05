@@ -50,7 +50,8 @@ include_once("menu.php");
         <hr><br>
         <div id="res_table">
             <h2>Result Status</h2>
-            <table id="resultTable">
+            <button id="showTopCPM">Show Top CPMs</button>
+            <table id="resultTable" border="2" style="width:100%">
                 <thead>
                     <tr>
                         <th>Result ID</th>
@@ -63,17 +64,15 @@ include_once("menu.php");
                         <th>Download</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resultBody">
                     <?php
-                    $con = mysqli_connect("localhost", "root", "", "project");
+                    $result_query = "SELECT * FROM result WHERE uname ='$uname'";
+                    $result_result = mysqli_query($con, $result_query);
 
-                    $uname = $_SESSION['username'];
-                    $sql =  "Select * from result where uname ='$uname'";
-                    $result = mysqli_query($con, $sql);
-
-                    if (mysqli_num_rows($result) > 0) {
-
-                        while ($row = mysqli_fetch_assoc($result)) {
+                    $data = [];
+                    if (mysqli_num_rows($result_result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result_result)) {
+                            $data[] = $row;
                             echo "<tr>";
                             echo "<td>" . $row['result_id'] . "</td>";
                             echo "<td>" . $row['date'] . "</td>";
@@ -82,18 +81,53 @@ include_once("menu.php");
                             echo "<td>" . $row['mistake'] . "</td>";
                             echo "<td>" . $row['cpm'] . "</td>";
                             echo "<td><a href=\"delete_rec.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
-                            echo "<td>" . "<a href=\"download.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a>" . "</td>";
+                            echo "<td><a href=\"download.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
                             echo "</tr>";
+                        }
+                    }
+
+                    // Implementing Bubble Sort to sort by CPM
+                    for ($i = 0; $i < count($data); $i++) {
+                        for ($j = 0; $j < count($data) - 1; $j++) {
+                            if ($data[$j]['cpm'] < $data[$j + 1]['cpm']) {
+                                $temp = $data[$j];
+                                $data[$j] = $data[$j + 1];
+                                $data[$j + 1] = $temp;
+                            }
                         }
                     }
                     ?>
                 </tbody>
             </table>
+            <div id="topCPMTable">
+                <!-- Placeholder for the new table -->
+            </div>
         </div>
     </section>
     <script>
-        $(document).ready(function() {
-            $('#resultTable').DataTable();
+        document.getElementById('showTopCPM').addEventListener('click', function() {
+            let data = <?php echo json_encode($data); ?>;
+
+            // Generate new table
+            let tableHTML = '<h2>Top CPM Results</h2>';
+            tableHTML += '<table border="2">';
+            tableHTML += '<tr><th>Result ID</th><th>Record Saved Date</th><th>Level</th><th>W.P.M</th><th>Errors</th><th>C.P.M</th><th>Delete</th><th>Download</th></tr>';
+
+            data.forEach(function(item) {
+                tableHTML += '<tr>';
+                tableHTML += '<td>' + item.result_id + '</td>';
+                tableHTML += '<td>' + item.date + '</td>';
+                tableHTML += '<td>' + item.level + '</td>';
+                tableHTML += '<td>' + item.wpm + '</td>';
+                tableHTML += '<td>' + item.mistake + '</td>';
+                tableHTML += '<td>' + item.cpm + '</td>';
+                tableHTML += '<td><a href="delete_rec.php?r_id=' + item.result_id + '" id="btn"><i class="fa-solid fa-trash"></i></a></td>';
+                tableHTML += '<td><a href="download.php?resu=' + item.result_id + '" id="btn1"><i class="fa-solid fa-file-arrow-down"></i></a></td>';
+                tableHTML += '</tr>';
+            });
+
+            tableHTML += '</table>';
+            document.getElementById('topCPMTable').innerHTML = tableHTML;
         });
         <?php if (isset($_SESSION['user_id'])) : ?>
             isLoggedIn = "true";
