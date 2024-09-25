@@ -87,15 +87,78 @@ include_once("menu.php");
                     }
 
                     // Implementing Bubble Sort to sort by CPM
-                    for ($i = 0; $i < count($data); $i++) {
-                        for ($j = 0; $j < count($data) - 1; $j++) {
-                            if ($data[$j]['cpm'] < $data[$j + 1]['cpm']) {
-                                $temp = $data[$j];
-                                $data[$j] = $data[$j + 1];
-                                $data[$j + 1] = $temp;
+                    function bubbleSort(&$arr)
+                    {
+                        $start = microtime(true);
+                        $n = count($arr);
+                        for ($i = 0; $i < $n; $i++) {
+                            for ($j = 0; $j < $n - $i - 1; $j++) {
+                                if ($arr[$j]['cpm'] < $arr[$j + 1]['cpm']) {
+                                    $temp = $arr[$j];
+                                    $arr[$j] = $arr[$j + 1];
+                                    $arr[$j + 1] = $temp;
+                                }
                             }
                         }
+                        $end = microtime(true);
+                        return $end - $start;
                     }
+
+                    // Implementing Merge Sort to sort by CPM
+                    function mergeSort(&$arr)
+                    {
+                        $start = microtime(true);
+                        mergeSortHelper($arr, 0, count($arr) - 1);
+                        $end = microtime(true);
+                        return $end - $start;
+                    }
+
+                    function mergeSortHelper(&$arr, $left, $right)
+                    {
+                        if ($left < $right) {
+                            $middle = floor(($left + $right) / 2);
+                            mergeSortHelper($arr, $left, $middle);
+                            mergeSortHelper($arr, $middle + 1, $right);
+                            merge($arr, $left, $middle, $right);
+                        }
+                    }
+
+                    function merge(&$arr, $left, $middle, $right)
+                    {
+                        $leftArr = array_slice($arr, $left, $middle - $left + 1);
+                        $rightArr = array_slice($arr, $middle + 1, $right - $middle);
+
+                        $i = 0;
+                        $j = 0;
+                        $k = $left;
+
+                        while ($i < count($leftArr) && $j < count($rightArr)) {
+                            if ($leftArr[$i]['cpm'] >= $rightArr[$j]['cpm']) {
+                                $arr[$k] = $leftArr[$i];
+                                $i++;
+                            } else {
+                                $arr[$k] = $rightArr[$j];
+                                $j++;
+                            }
+                            $k++;
+                        }
+
+                        while ($i < count($leftArr)) {
+                            $arr[$k] = $leftArr[$i];
+                            $i++;
+                            $k++;
+                        }
+
+                        while ($j < count($rightArr)) {
+                            $arr[$k] = $rightArr[$j];
+                            $j++;
+                            $k++;
+                        }
+                    }
+
+                    $bubbleSortTime = bubbleSort($data);
+                    $dataCopy = $data; // Create a copy for merge sort
+                    $mergeSortTime = mergeSort($dataCopy);
                     ?>
                 </tbody>
             </table>
@@ -107,33 +170,23 @@ include_once("menu.php");
     <script>
         document.getElementById('showTopCPM').addEventListener('click', function() {
             let data = <?php echo json_encode($data); ?>;
+            let dataCopy = <?php echo json_encode($dataCopy); ?>;
+            let bubbleSortTime = <?php echo json_encode($bubbleSortTime); ?>;
+            let mergeSortTime = <?php echo json_encode($mergeSortTime); ?>;
 
             // Generate new table
             let tableHTML = '<h2>Top CPM Results</h2>';
+            tableHTML += '<p>Bubble Sort Time: ' + bubbleSortTime.toFixed(6) + ' seconds</p>';
+            tableHTML += '<p>Merge Sort Time: ' + mergeSortTime.toFixed(6) + ' seconds</p>';
             tableHTML += '<table border="2">';
-            tableHTML += '<tr>';
-            // tableHTML += '<th>Result ID</th>';
-            // tableHTML += '<th>Record Saved Date</th>';
-            // tableHTML += '<th>Level</th>';
-            // tableHTML += '<th>W.P.M</th>';
-            // tableHTML += '<th>Errors</th>';
-            tableHTML += '<th>C.P.M</th>';
-            // tableHTML += '<th>Delete</th>';
-            // tableHTML += '<th>Download</th>';
-            tableHTML += '</tr>';
+            tableHTML += '<tr><th>Bubble Sort CPM</th><th>Merge Sort CPM</th></tr>';
 
-            data.forEach(function(item) {
+            for (let i = 0; i < Math.min(data.length, dataCopy.length); i++) {
                 tableHTML += '<tr>';
-                // tableHTML += '<td>' + item.result_id + '</td>';
-                // tableHTML += '<td>' + item.date + '</td>';
-                // tableHTML += '<td>' + item.level + '</td>';
-                // tableHTML += '<td>' + item.wpm + '</td>';
-                // tableHTML += '<td>' + item.mistake + '</td>';
-                tableHTML += '<td>' + item.cpm + '</td>';
-                // tableHTML += '<td><a href="delete_rec.php?r_id=' + item.result_id + '" id="btn"><i class="fa-solid fa-trash"></i></a></td>';
-                // tableHTML += '<td><a href="download.php?resu=' + item.result_id + '" id="btn1"><i class="fa-solid fa-file-arrow-down"></i></a></td>';
+                tableHTML += '<td>' + data[i].cpm + '</td>';
+                tableHTML += '<td>' + dataCopy[i].cpm + '</td>';
                 tableHTML += '</tr>';
-            });
+            }
 
             tableHTML += '</table>';
             document.getElementById('topCPMTable').innerHTML = tableHTML;
