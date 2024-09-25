@@ -86,24 +86,6 @@ include_once("menu.php");
                         }
                     }
 
-                    // Implementing Bubble Sort to sort by CPM
-                    function bubbleSort(&$arr)
-                    {
-                        $start = microtime(true);
-                        $n = count($arr);
-                        for ($i = 0; $i < $n; $i++) {
-                            for ($j = 0; $j < $n - $i - 1; $j++) {
-                                if ($arr[$j]['cpm'] < $arr[$j + 1]['cpm']) {
-                                    $temp = $arr[$j];
-                                    $arr[$j] = $arr[$j + 1];
-                                    $arr[$j + 1] = $temp;
-                                }
-                            }
-                        }
-                        $end = microtime(true);
-                        return $end - $start;
-                    }
-
                     // Implementing Merge Sort to sort by CPM
                     function mergeSort(&$arr)
                     {
@@ -156,9 +138,7 @@ include_once("menu.php");
                         }
                     }
 
-                    $bubbleSortTime = bubbleSort($data);
-                    $dataCopy = $data; // Create a copy for merge sort
-                    $mergeSortTime = mergeSort($dataCopy);
+                    $mergeSortTime = mergeSort($data);
                     ?>
                 </tbody>
             </table>
@@ -170,27 +150,24 @@ include_once("menu.php");
     <script>
         document.getElementById('showTopCPM').addEventListener('click', function() {
             let data = <?php echo json_encode($data); ?>;
-            let dataCopy = <?php echo json_encode($dataCopy); ?>;
-            let bubbleSortTime = <?php echo json_encode($bubbleSortTime); ?>;
             let mergeSortTime = <?php echo json_encode($mergeSortTime); ?>;
 
             // Generate new table
             let tableHTML = '<h2>Top CPM Results</h2>';
-            tableHTML += '<p>Bubble Sort Time: ' + bubbleSortTime.toFixed(6) + ' seconds</p>';
             tableHTML += '<p>Merge Sort Time: ' + mergeSortTime.toFixed(6) + ' seconds</p>';
             tableHTML += '<table border="2">';
-            tableHTML += '<tr><th>Bubble Sort CPM</th><th>Merge Sort CPM</th></tr>';
+            tableHTML += '<tr><th>Merge Sort CPM</th></tr>';
 
-            for (let i = 0; i < Math.min(data.length, dataCopy.length); i++) {
+            for (let i = 0; i < data.length; i++) {
                 tableHTML += '<tr>';
                 tableHTML += '<td>' + data[i].cpm + '</td>';
-                tableHTML += '<td>' + dataCopy[i].cpm + '</td>';
                 tableHTML += '</tr>';
             }
 
             tableHTML += '</table>';
             document.getElementById('topCPMTable').innerHTML = tableHTML;
         });
+
         <?php if (isset($_SESSION['user_id'])) : ?>
             isLoggedIn = "true";
             document.querySelector("section").style.display = "block";
