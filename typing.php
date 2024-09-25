@@ -241,7 +241,7 @@ include_once("menu.php");
                     charIndex--;
                     if (keys[charIndex].classList.contains("incorrect")) {
                         //checks if element has a class named "incorrect"
-                        mistake--;
+                        // mistake--;
                     }
                     keys[charIndex].classList.remove("correct", "incorrect"); //removes class when reach to certain index
                 }
