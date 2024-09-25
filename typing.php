@@ -193,17 +193,16 @@ include_once("menu.php");
     });
 
 
+    // Modify the initial_time function
     function initial_time() {
         if (timeleft > 0) {
-            timeleft--; //time countdown
+            timeleft--;
             counter.innerText = timeleft;
-            if (timeleft === 0 && <?php echo isset($_SESSION['user_id']) ? 'true' : 'false'; ?>) {
-                save.style.display = "block";
+            updateResults();
+            if (timeleft === 0) {
+                endTest();
             }
-            let wpmV = Math.round(((charIndex - mistake) / 5 / (max - timeleft)) * 60);
-            wpm.innerText = wpmV;
-            let wpmValue = wpmV;
-        } else {}
+        }
     }
 
     function result() {
@@ -226,49 +225,97 @@ include_once("menu.php");
     });
 
     */
+    // Function to calculate Levenshtein Distance
+    function levenshteinDistance(str1, str2) {
+        const len1 = str1.length;
+        const len2 = str2.length;
+
+        // Create a 2D array to store distances
+        const dp = Array(len1 + 1).fill(null).map(() => Array(len2 + 1).fill(null));
+
+        // Initialize the base case values
+        for (let i = 0; i <= len1; i++) dp[i][0] = i;
+        for (let j = 0; j <= len2; j++) dp[0][j] = j;
+
+        // Calculate distances
+        for (let i = 1; i <= len1; i++) {
+            for (let j = 1; j <= len2; j++) {
+                const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+                dp[i][j] = Math.min(
+                    dp[i - 1][j] + 1, // Deletion
+                    dp[i][j - 1] + 1, // Insertion
+                    dp[i - 1][j - 1] + cost // Substitution
+                );
+            }
+        }
+
+        return dp[len1][len2]; // The edit distance
+    }
 
     function typing() {
+        if (timeleft <= 0) {
+            inputField.setAttribute('disabled', 'disabled');
+            return;
+        }
+
         let keys = para.querySelectorAll("span");
-        let typed = inputField.value.split("")[charIndex]; //assign char at specific index
+        let typedText = inputField.value;
+        let originalText = para.innerText.substring(0, typedText.length);
 
-        if (charIndex < keys.length - 1 && timeleft > 0) {
-            if (!isTyping) {
-                timer = setInterval(initial_time, 1000); //executes initial_time function repeatedly at 1sec
-                isTyping = true;
-            }
-            if (typed == null) {
-                if (charIndex > 0) {
-                    charIndex--;
-                    if (keys[charIndex].classList.contains("incorrect")) {
-                        //checks if element has a class named "incorrect"
-                        // mistake--;
-                    }
-                    keys[charIndex].classList.remove("correct", "incorrect"); //removes class when reach to certain index
-                }
-            } else {
-                if (keys[charIndex].innerText == typed) {
-                    keys[charIndex].classList.add(
-                        "correct"); //add correct elements css if user typing and para char is correct
+        // Calculate Levenshtein distance
+        let distance = levenshteinDistance(typedText, originalText);
+
+        // Update mistake count
+        mistake = distance;
+        mistakeV.innerText = mistake;
+
+        // Update character index
+        charIndex = typedText.length;
+
+        // Handle timer
+        if (!isTyping && charIndex > 0) {
+            timer = setInterval(initial_time, 1000);
+            isTyping = true;
+        }
+
+        // Update character styling
+        keys.forEach((span, index) => {
+            span.classList.remove("correct", "incorrect", "active");
+            if (index < charIndex) {
+                if (span.innerText === typedText[index]) {
+                    span.classList.add("correct");
                 } else {
-                    mistake++; //else it is a mistake
-                    keys[charIndex].classList.add("incorrect");
+                    span.classList.add("incorrect");
                 }
-                charIndex++;
+            } else if (index === charIndex) {
+                span.classList.add("active");
             }
-            keys.forEach((span) => span.classList.remove(
-                "active")); //removes the CSS of class "active" from the class list.
-            keys[charIndex].classList.add("active");
+        });
 
-            let wpmV = Math.round(((charIndex - mistake) / 5 / (max - timeleft)) * 60);
-            wpmV = wpmV < 0 || !wpmV || wpmV === Infinity ? 0 :
-                wpmV; //checks if wpmV is negative, false or infinity. If any of these conditions are true, wpmV=0. Otherwise, wpmV = wpmV
+        // Calculate WPM and CPM
+        updateResults();
+    }
 
-            wpm.innerHTML = wpmV;
-            mistakeV.innerText = mistake;
-            cpm.innerText = charIndex - mistake; //correct words
-        } else {
-            clearInterval(timer);
-            inputField.value = "";
+    function updateResults() {
+        if (timeleft < max) {
+            let timeElapsed = (max - timeleft) / 60; // in minutes
+            let totalWords = inputField.value.trim().split(/\s+/).length;
+            let correctChars = charIndex - mistake;
+
+            let wpmV = Math.round(totalWords / timeElapsed);
+            let cpmV = Math.round(correctChars / timeElapsed);
+
+            wpm.innerText = wpmV < 0 || !wpmV || wpmV === Infinity ? 0 : wpmV;
+            cpm.innerText = cpmV < 0 || !cpmV || cpmV === Infinity ? 0 : cpmV;
+        }
+    }
+
+    function endTest() {
+        clearInterval(timer);
+        inputField.setAttribute('disabled', 'disabled');
+        updateResults();
+        if (isLoggedIn === "true") {
+            save.style.display = "block";
         }
     }
 
