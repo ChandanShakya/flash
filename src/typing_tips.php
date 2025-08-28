@@ -1,17 +1,19 @@
-<?php
-include_once 'menu.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Typing Tips</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/typing_tips.css" />
+	<link rel="stylesheet" href="/assets/css/menu.css">
 </head>
 
 <body>
+    <?php
+    include_once 'menu.php';
+    ?>
     <section>
         <div class="row">
             <h2 class="section-heading">Typing Tips</h2>

@@ -1,22 +1,23 @@
-<?php
-include_once 'menu.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flash</title>
     <link href="/assets/css/home.css" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/menu.css">
     <!-- <script src="home.js"></script> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
-    
-     
+    <?php
+    include_once 'menu.php';
+    ?>
+
     <section id="parent">
         <section class="first">
             <div class="content">
@@ -95,21 +96,24 @@ include_once 'menu.php';
                     <div class="icon"><i class="fa fa-circle-info"></i></div>
                     <div class="content2">
                         <h3>Career</h3>
-                        <p>A typing speed calculator can impact your career by enhancing your efficiency, productivity, and accuracy in tasks that involve typing.</p>
+                        <p>A typing speed calculator can impact your career by enhancing your efficiency, productivity,
+                            and accuracy in tasks that involve typing.</p>
                     </div>
                 </div>
                 <div class="box">
                     <div class="icon"><i class="fa fa-bullseye"></i></div>
                     <div class="content2">
                         <h3>Productivity</h3>
-                        <p>A typing speed calculator boosts productivity by enabling faster and more efficient task completion.It save time, meet deadlines and handle large workloads. </p>
+                        <p>A typing speed calculator boosts productivity by enabling faster and more efficient task
+                            completion.It save time, meet deadlines and handle large workloads. </p>
                     </div>
                 </div>
                 <div class="box">
                     <div class="icon"><i class="fa fa-book"></i></div>
                     <div class="content2">
                         <h3>Academic</h3>
-                        <p>A typing speed calculator can significantly benefit academics by improving efficiency and effectiveness in various academic tasks.</p>
+                        <p>A typing speed calculator can significantly benefit academics by improving efficiency and
+                            effectiveness in various academic tasks.</p>
                     </div>
                 </div>
             </div>
@@ -132,7 +136,8 @@ include_once 'menu.php';
     <footer>
         <div class="roww">
             <div class="g">
-                <p class="para">We are glad to have you on our website. Flash is a free site which enables you to unlock your hidden potentials. So, feel 
+                <p class="para">We are glad to have you on our website. Flash is a free site which enables you to unlock
+                    your hidden potentials. So, feel
                     free to use it anytime and enhance your skills.
                 </p>
             </div>

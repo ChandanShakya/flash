@@ -1,6 +1,3 @@
-<?php
-include_once 'menu.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,12 +7,16 @@ include_once 'menu.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Test</title>
     <link rel="stylesheet" href="/assets/css/typing.css">
+	<link rel="stylesheet" href="/assets/css/menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
+    <?php
+    include_once 'menu.php';
+    ?>
     <h2>Typing Speed Calculator</h2>
     <div class="block">
         <ul class="bar">
@@ -125,7 +126,7 @@ include_once 'menu.php';
     var mistake = 0;
     var isTyping = 0;
 
-    document.addEventListener("DOMContentLoaded", function() { //fired when HTML document is completely loaded and parsed
+    document.addEventListener("DOMContentLoaded", function () { //fired when HTML document is completely loaded and parsed
         <?php if (isset($_SESSION['user_id'])) { ?>
             isLoggedIn = "true";
             document.getElementById("level").style.display = "flex";
@@ -173,8 +174,8 @@ include_once 'menu.php';
 
     }
 
-    $(document).ready(function() {
-        $('#savebtn').click(function() {
+    $(document).ready(function () {
+        $('#savebtn').click(function () {
             var wpmValue = $(".wpm span").text();
             var mistakeValue = $(".mistake span").text();
             var cpmValue = $(".cpm span").text();
@@ -335,7 +336,7 @@ include_once 'menu.php';
     inputField.addEventListener("input", typing);
     retype.addEventListener("click", reset);
 
-    level.addEventListener("change", function() {
+    level.addEventListener("change", function () {
         updateMaxTime();
     });
 </script>
