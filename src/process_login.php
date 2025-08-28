@@ -1,8 +1,11 @@
 <?php
 
 session_start();
+require 'database_connection.php';
 
-$conn = mysqli_connect('localhost', 'root', '', 'project');
+$db = new Database_conn();
+$conn = $db->getConnection();
+
 $uname = $_POST['uname'];
 $pass = $_POST['pass'];
 

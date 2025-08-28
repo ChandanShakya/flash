@@ -62,8 +62,11 @@
 <body>
     <div id="download_content">
         <?php
+require 'database_connection.php';
+
 $res_id = $_GET['resu'];
-        $con = mysqli_connect('localhost', 'root', '', 'project');
+        $db = new Database_conn();
+        $con = $db->getConnection();
 
         $sql2 = "SELECT * from download where result_id = '$res_id'";
         $resu = mysqli_query($con, $sql2);

@@ -1,5 +1,6 @@
 <?php
 include_once 'menu.php';
+require 'database_connection.php';
 
 ?>
 <!DOCTYPE html>
@@ -24,7 +25,8 @@ include_once 'menu.php';
     <section>
         <div id="uinfo">
             <?php
-            $con = mysqli_connect('localhost', 'root', '', 'project');
+            $db = new Database_conn();
+$con = $db->getConnection();
 
 $uname = $_SESSION['username'];
 $sql = "Select * from user where uname ='$uname'";

@@ -1,6 +1,9 @@
 <?php
+require 'database_connection.php';
 
-$con = mysqli_connect('localhost', 'root', '', 'project');
+$db = new Database_conn();
+$con = $db->getConnection();
+
 $res_id = $_GET['r_id'];
 
 $sql = "DELETE FROM result WHERE result_id = '$res_id'";
