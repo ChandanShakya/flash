@@ -1,19 +1,18 @@
 <?php
-require "edit_record.php";
+
+require 'edit_record.php';
 session_start();
 
-$e = new crude();
+$e = new crude;
 $con = $e->connect();
-$table = "user";
+$table = 'user';
 
-$fname= $_POST['fname'];
-$lname= $_POST['lname'];
-$email= $_POST['email'];
-$id= $_SESSION['uid'];
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$email = $_POST['email'];
+$id = $_SESSION['uid'];
 
+$cond = ['id' => $id];
+$item = ['fname' => $fname, 'lname' => $lname, 'email' => $email];
 
-$cond = ["id" => $id];
-$item= ["fname"=>$fname, "lname"=>$lname, "email"=>$email];
-
-$e-> edit($table, $item, $cond);
-?>
+$e->edit($table, $item, $cond);

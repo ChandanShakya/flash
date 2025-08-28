@@ -62,42 +62,42 @@
 <body>
     <div id="download_content">
         <?php
-$res_id= $_GET['resu'];
-$con = mysqli_connect("localhost", "root", "", "project");
+$res_id = $_GET['resu'];
+        $con = mysqli_connect('localhost', 'root', '', 'project');
 
-$sql2 = "SELECT * from download where result_id = '$res_id'";
-$resu = mysqli_query($con, $sql2);
+        $sql2 = "SELECT * from download where result_id = '$res_id'";
+        $resu = mysqli_query($con, $sql2);
 
-if ($resu->num_rows > 0) {
-    echo "<h1>User Detail</h1>" . "<br>";
+        if ($resu->num_rows > 0) {
+            echo '<h1>User Detail</h1>'.'<br>';
 
-    while ($rows = $resu->fetch_assoc()) {
-        echo "<strong>User Id: </strong> " . $rows["id"] ."<br>";
-        echo "<strong>Name: </strong>" . ucfirst($rows["fname"]) . " " . ucfirst($rows["lname"]) ."<br>";
-        echo "<strong>Email: </strong>" . $rows["email"] ."<br>";
-        echo "<br>";
-    }
+            while ($rows = $resu->fetch_assoc()) {
+                echo '<strong>User Id: </strong> '.$rows['id'].'<br>';
+                echo '<strong>Name: </strong>'.ucfirst($rows['fname']).' '.ucfirst($rows['lname']).'<br>';
+                echo '<strong>Email: </strong>'.$rows['email'].'<br>';
+                echo '<br>';
+            }
 
-    mysqli_data_seek($resu, 0); // Move the pointer back to the beginning of the result set
-    echo "<h1>Result Detail</h1>" . "<br>";
-    echo "<table>";
-    echo "<tr><th>Result ID</th><th>Record_Saved Date</th><th>Level</th><th>WPM</th><th>Mistakes</th><th>CPM</th></tr>";
+            mysqli_data_seek($resu, 0); // Move the pointer back to the beginning of the result set
+            echo '<h1>Result Detail</h1>'.'<br>';
+            echo '<table>';
+            echo '<tr><th>Result ID</th><th>Record_Saved Date</th><th>Level</th><th>WPM</th><th>Mistakes</th><th>CPM</th></tr>';
 
-    while ($rows = $resu->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>" . $rows["result_id"] . "</td>";
-        echo "<td>" . $rows["date"] . "</td>";
-        echo "<td>" . $rows["level"] . "</td>";
-        echo "<td>" . $rows["wpm"] . "</td>";
-        echo "<td>" . $rows["mistake"] . "</td>";
-        echo "<td>" . $rows["cpm"] . "</td>";
-        echo "</tr>";
-    }
+            while ($rows = $resu->fetch_assoc()) {
+                echo '<tr>';
+                echo '<td>'.$rows['result_id'].'</td>';
+                echo '<td>'.$rows['date'].'</td>';
+                echo '<td>'.$rows['level'].'</td>';
+                echo '<td>'.$rows['wpm'].'</td>';
+                echo '<td>'.$rows['mistake'].'</td>';
+                echo '<td>'.$rows['cpm'].'</td>';
+                echo '</tr>';
+            }
 
-    echo "</table>";
-}
+            echo '</table>';
+        }
 
-?>
+        ?>
     </div>
     <button id="generatePDFButton">Generate PDF</button>
 

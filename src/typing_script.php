@@ -1,5 +1,5 @@
 <?php
-require("typing_test.php");
+require 'typing_test.php';
 ?>
 <html>
   <script>
@@ -50,13 +50,13 @@ const level = document.getElementById("level");
 var isLoggedIn;
 
 document.addEventListener("DOMContentLoaded", function() { //fired when HTML document is completely loaded and parsed
-  <?php if (isset($_SESSION['user_id'])): ?>
+  <?php if (isset($_SESSION['user_id'])) { ?>
    isLoggedIn="true";
    document.getElementById("level").style.display = "flex";
-  <?php else: ?>
+  <?php } else { ?>
    isLoggedIn="false";
    document.getElementById("level").style.display = "none";
-  <?php endif; ?>
+  <?php } ?>
 });
 
 var timer;

@@ -23,25 +23,25 @@
             <li><a class="resize" href="src/results.php">Result</a></li>
             <?php
     session_start();
-    if (isset($_SESSION['user_id'])) {
-        echo '<li><a class="resize" href="src/home.php" id="log">Logout</a></li>';
-    } else {
-        echo '<li><a class="resize" href="src/login.php" id="sign">Login</a></li>';
-        
-    }
-    ?>
+            if (isset($_SESSION['user_id'])) {
+                echo '<li><a class="resize" href="src/home.php" id="log">Logout</a></li>';
+            } else {
+                echo '<li><a class="resize" href="src/login.php" id="sign">Login</a></li>';
+
+            }
+            ?>
         </ul>
     </header>
     <script>
     document.addEventListener("DOMContentLoaded",
     function() { //fired when HTML document is completely loaded and parsed
-        <?php if (isset($_SESSION['user_id'])): ?>
+        <?php if (isset($_SESSION['user_id'])) { ?>
         document.getElementById("sign").style.display = "none";
         document.getElementById("log").style.display = "flex";
-        <?php else: ?>
+        <?php } else { ?>
         document.getElementById("log").style.display = "none";
         document.getElementById("sign").style.display = "flex";
-        <?php endif; ?>
+        <?php } ?>
     });
 
     document.getElementById("log").addEventListener("click", function() {

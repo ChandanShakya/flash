@@ -1,5 +1,5 @@
 <?php
-include_once("menu.php");
+include_once 'menu.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -126,17 +126,17 @@ include_once("menu.php");
     var isTyping = 0;
 
     document.addEventListener("DOMContentLoaded", function() { //fired when HTML document is completely loaded and parsed
-        <?php if (isset($_SESSION['user_id'])) : ?>
+        <?php if (isset($_SESSION['user_id'])) { ?>
             isLoggedIn = "true";
             document.getElementById("level").style.display = "flex";
             updateMaxTime();
-        <?php else : ?>
+        <?php } else { ?>
             isLoggedIn = "false";
             document.getElementById("level").style.display = "none";
             max = 65;
             counter.innerHTML = max;
             reset();
-        <?php endif; ?>
+        <?php } ?>
     });
 
     function updateMaxTime() {

@@ -1,0 +1,13 @@
+{
+    "name": "flash/project",
+    "description": "Flash typing test project",
+    "authors": [
+        {
+            "name": "Adarsha Shakya"
+        }
+    ],
+    "require-dev": {
+        "laravel/pint": "^1.24",
+        "rector/rector": "^2.1"
+    }
+}

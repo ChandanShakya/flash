@@ -1,17 +1,15 @@
 <?php
-require "database_connection.php";
+require 'database_connection.php';
 
-
-$db_r= new Database_conn();
+$db_r = new Database_conn;
 $conn = $db_r->getConnection();
 
-
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+    exit('Connection failed: '.$conn->connect_error);
 }
 
 // Prepare and execute the query
-$stmt = $conn->prepare("SELECT id,fname,lname,uname,email FROM signin");
+$stmt = $conn->prepare('SELECT id,fname,lname,uname,email FROM signin');
 $stmt->execute();
 $result = $stmt->get_result();
 

@@ -1,54 +1,59 @@
 <?php
-require "database_connection.php";
 
-class save{
+require 'database_connection.php';
+
+class save
+{
     private $con;
 
-    public function connect(){
-        $db= new Database_conn();
-            $this->con = $db->getConnection();
-            return $this->con;
-        
-        }
+    public function connect()
+    {
+        $db = new Database_conn;
+        $this->con = $db->getConnection();
 
-    public function insert_result($table,$item){
-        $col="(";
-        $vals="Values(";
-        foreach($item as $key=>$value){
-            $col .=$key . ",";
-            $vals .= "'" .$value ."',";
-        }
-        $col =rtrim($col,",");
-        $vals = rtrim($vals,",");
-        $col .=")";
-        $vals .=")";
+        return $this->con;
 
-        $query = "Insert into " .$table . $col . $vals;
+    }
+
+    public function insert_result($table, $item)
+    {
+        $col = '(';
+        $vals = 'Values(';
+        foreach ($item as $key => $value) {
+            $col .= $key.',';
+            $vals .= "'".$value."',";
+        }
+        $col = rtrim($col, ',');
+        $vals = rtrim($vals, ',');
+        $col .= ')';
+        $vals .= ')';
+
+        $query = 'Insert into '.$table.$col.$vals;
 
         $resu = mysqli_query($this->con, $query);
-        if($resu){
-            header("Location:src/results.php");
+        if ($resu) {
+            header('Location:src/results.php');
         }
     }
 
-    public function insert_test($table,$item){
-        $col="(";
-        $vals="Values(";
-        foreach($item as $key=>$value){
-            $col .=$key . ",";
-            $vals .= "'" .$value ."',";
+    public function insert_test($table, $item)
+    {
+        $col = '(';
+        $vals = 'Values(';
+        foreach ($item as $key => $value) {
+            $col .= $key.',';
+            $vals .= "'".$value."',";
         }
-        $col =rtrim($col,",");
-        $vals = rtrim($vals,",");
-        $col .=")";
-        $vals .=")";
+        $col = rtrim($col, ',');
+        $vals = rtrim($vals, ',');
+        $col .= ')';
+        $vals .= ')';
 
-        $query = "Insert into " .$table . $col . $vals;
+        $query = 'Insert into '.$table.$col.$vals;
 
         $resul = mysqli_query($this->con, $query);
-        if($resul){
-            header("Location:src/results.php");
+        if ($resul) {
+            header('Location:src/results.php');
         }
     }
 }
-?>

@@ -1,5 +1,5 @@
 <?php
-include_once("menu.php");
+include_once 'menu.php';
 
 ?>
 <!DOCTYPE html>
@@ -24,27 +24,27 @@ include_once("menu.php");
     <section>
         <div id="uinfo">
             <?php
-            $con = mysqli_connect("localhost", "root", "", "project");
+            $con = mysqli_connect('localhost', 'root', '', 'project');
 
-            $uname = $_SESSION['username'];
-            $sql =  "Select * from user where uname ='$uname'";
-            $result = mysqli_query($con, $sql);
+$uname = $_SESSION['username'];
+$sql = "Select * from user where uname ='$uname'";
+$result = mysqli_query($con, $sql);
 
-            if (mysqli_num_rows($result) > 0) {
-                // Loop through each row and display the information
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $fname = $row['fname'];
-                    $lname = $row['lname'];
-                    $_SESSION['uid'] = $row['id'];
+if (mysqli_num_rows($result) > 0) {
+    // Loop through each row and display the information
+    while ($row = mysqli_fetch_assoc($result)) {
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $_SESSION['uid'] = $row['id'];
 
-                    echo "<h1>User Details</h1>";
-                    echo "<p>User ID: " . $row['id'] . "</p>";
-                    echo "<p>Name: " . ucfirst($fname) . " " . ucfirst($lname) . "</p>";
-                    echo "<p>Email: " . $row['email'] . "</p>";
-                    echo "<p><a href=\"src/edit_user.php\" id=\"editt\"><i class=\"fa-solid fa-pen\"></i></a></p>";
-                }
-            }
-            ?>
+        echo '<h1>User Details</h1>';
+        echo '<p>User ID: '.$row['id'].'</p>';
+        echo '<p>Name: '.ucfirst($fname).' '.ucfirst($lname).'</p>';
+        echo '<p>Email: '.$row['email'].'</p>';
+        echo '<p><a href="src/edit_user.php" id="editt"><i class="fa-solid fa-pen"></i></a></p>';
+    }
+}
+?>
         </div>
         <br>
         <hr><br>
@@ -66,80 +66,81 @@ include_once("menu.php");
                 </thead>
                 <tbody id="resultBody">
                     <?php
-                    $result_query = "SELECT * FROM result WHERE uname ='$uname'";
-                    $result_result = mysqli_query($con, $result_query);
+        $result_query = "SELECT * FROM result WHERE uname ='$uname'";
+$result_result = mysqli_query($con, $result_query);
 
-                    $data = [];
-                    if (mysqli_num_rows($result_result) > 0) {
-                        while ($row = mysqli_fetch_assoc($result_result)) {
-                            $data[] = $row;
-                            echo "<tr>";
-                            echo "<td>" . $row['result_id'] . "</td>";
-                            echo "<td>" . $row['date'] . "</td>";
-                            echo "<td>" . $row['level'] . "</td>";
-                            echo "<td>" . $row['wpm'] . "</td>";
-                            echo "<td>" . $row['mistake'] . "</td>";
-                            echo "<td>" . $row['cpm'] . "</td>";
-                            echo "<td><a href=\"src/delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
-                            echo "<td><a href=\"src/download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
-                            echo "</tr>";
-                        }
-                    }
+$data = [];
+if (mysqli_num_rows($result_result) > 0) {
+    while ($row = mysqli_fetch_assoc($result_result)) {
+        $data[] = $row;
+        echo '<tr>';
+        echo '<td>'.$row['result_id'].'</td>';
+        echo '<td>'.$row['date'].'</td>';
+        echo '<td>'.$row['level'].'</td>';
+        echo '<td>'.$row['wpm'].'</td>';
+        echo '<td>'.$row['mistake'].'</td>';
+        echo '<td>'.$row['cpm'].'</td>';
+        echo "<td><a href=\"src/delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
+        echo "<td><a href=\"src/download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
+        echo '</tr>';
+    }
+}
 
-                    // Implementing Merge Sort to sort by CPM
-                    function mergeSort(&$arr)
-                    {
-                        $start = microtime(true);
-                        mergeSortHelper($arr, 0, count($arr) - 1);
-                        $end = microtime(true);
-                        return $end - $start;
-                    }
+// Implementing Merge Sort to sort by CPM
+function mergeSort(&$arr)
+{
+    $start = microtime(true);
+    mergeSortHelper($arr, 0, count($arr) - 1);
+    $end = microtime(true);
 
-                    function mergeSortHelper(&$arr, $left, $right)
-                    {
-                        if ($left < $right) {
-                            $middle = floor(($left + $right) / 2);
-                            mergeSortHelper($arr, $left, $middle);
-                            mergeSortHelper($arr, $middle + 1, $right);
-                            merge($arr, $left, $middle, $right);
-                        }
-                    }
+    return $end - $start;
+}
 
-                    function merge(&$arr, $left, $middle, $right)
-                    {
-                        $leftArr = array_slice($arr, $left, $middle - $left + 1);
-                        $rightArr = array_slice($arr, $middle + 1, $right - $middle);
+function mergeSortHelper(&$arr, $left, $right)
+{
+    if ($left < $right) {
+        $middle = floor(($left + $right) / 2);
+        mergeSortHelper($arr, $left, $middle);
+        mergeSortHelper($arr, $middle + 1, $right);
+        merge($arr, $left, $middle, $right);
+    }
+}
 
-                        $i = 0;
-                        $j = 0;
-                        $k = $left;
+function merge(&$arr, $left, $middle, $right)
+{
+    $leftArr = array_slice($arr, $left, $middle - $left + 1);
+    $rightArr = array_slice($arr, $middle + 1, $right - $middle);
 
-                        while ($i < count($leftArr) && $j < count($rightArr)) {
-                            if ($leftArr[$i]['cpm'] >= $rightArr[$j]['cpm']) {
-                                $arr[$k] = $leftArr[$i];
-                                $i++;
-                            } else {
-                                $arr[$k] = $rightArr[$j];
-                                $j++;
-                            }
-                            $k++;
-                        }
+    $i = 0;
+    $j = 0;
+    $k = $left;
 
-                        while ($i < count($leftArr)) {
-                            $arr[$k] = $leftArr[$i];
-                            $i++;
-                            $k++;
-                        }
+    while ($i < count($leftArr) && $j < count($rightArr)) {
+        if ($leftArr[$i]['cpm'] >= $rightArr[$j]['cpm']) {
+            $arr[$k] = $leftArr[$i];
+            $i++;
+        } else {
+            $arr[$k] = $rightArr[$j];
+            $j++;
+        }
+        $k++;
+    }
 
-                        while ($j < count($rightArr)) {
-                            $arr[$k] = $rightArr[$j];
-                            $j++;
-                            $k++;
-                        }
-                    }
+    while ($i < count($leftArr)) {
+        $arr[$k] = $leftArr[$i];
+        $i++;
+        $k++;
+    }
 
-                    $mergeSortTime = mergeSort($data);
-                    ?>
+    while ($j < count($rightArr)) {
+        $arr[$k] = $rightArr[$j];
+        $j++;
+        $k++;
+    }
+}
+
+$mergeSortTime = mergeSort($data);
+?>
                 </tbody>
             </table>
             <div id="topCPMTable">
@@ -168,15 +169,15 @@ include_once("menu.php");
             document.getElementById('topCPMTable').innerHTML = tableHTML;
         });
 
-        <?php if (isset($_SESSION['user_id'])) : ?>
+        <?php if (isset($_SESSION['user_id'])) { ?>
             isLoggedIn = "true";
             document.querySelector("section").style.display = "block";
             document.querySelector("#msg").style.display = "none"
-        <?php else : ?>
+        <?php } else { ?>
             isLoggedIn = "false";
             document.querySelector("section").style.display = "none";
             document.querySelector("#msg").style.display = "block"
-        <?php endif; ?>
+        <?php } ?>
     </script>
 </body>
 
