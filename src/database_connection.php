@@ -4,9 +4,9 @@ class Database_conn
 {
     private static $host = 'localhost';
 
-    private static $user = 'root';
+    private static $user = 'flash_user';
 
-    private static $pass = '';
+    private static $pass = 'flash_password123';
 
     private static $db = 'project';
 

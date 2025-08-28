@@ -41,7 +41,7 @@ if (mysqli_num_rows($result) > 0) {
         echo '<p>User ID: '.$row['id'].'</p>';
         echo '<p>Name: '.ucfirst($fname).' '.ucfirst($lname).'</p>';
         echo '<p>Email: '.$row['email'].'</p>';
-        echo '<p><a href="src/edit_user.php" id="editt"><i class="fa-solid fa-pen"></i></a></p>';
+        echo '<p><a href="/src/edit_user.php" id="editt"><i class="fa-solid fa-pen"></i></a></p>';
     }
 }
 ?>

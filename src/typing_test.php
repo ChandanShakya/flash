@@ -50,7 +50,7 @@ include_once 'menu.php';
                     <p id="paragraph"></p>
                 </div>
                 <div class="content">
-                    <form id="saveForm" action="src/save_result.php" method="POST">
+                    <form id="saveForm" action="/src/save_result.php" method="POST">
                         <input type="hidden" name="wpmValue" value="">
                         <input type="hidden" name="mistakeValue" value="">
                         <input type="hidden" name="cpmValue" value="">

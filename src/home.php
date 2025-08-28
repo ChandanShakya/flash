@@ -26,7 +26,7 @@ include_once 'menu.php';
                     <p>Flash is a skill development platform that helps a user to enhance their typing skills. Flash
                         also motivates a user by offering various levels
                         of sentences that a user can type and shows a detailed result on users typing </p>
-                    <a href="src/about_us.php">Learn More</a>
+                    <a href="/src/about_us.php">Learn More</a>
                 </div>
                 <div class="imgB">
                     <img src="/assets/images/bloom-man-with-headphones-is-typing-on-a-laptop.png" class="keyboard">
@@ -146,7 +146,7 @@ include_once 'menu.php';
                 echo 'style="display: none;"';
             } ?>>
                 <h5>Sign Up for Free !!</h5>
-                <button><a href="src/login.php">Start now <i class="fa fa-arrow-right"></i></a></button>
+                <button><a href="/src/login.php">Start now <i class="fa fa-arrow-right"></i></a></button>
             </div>
 
         </div>

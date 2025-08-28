@@ -27,8 +27,8 @@ $conn->close();
 <body>
 <div class="menu">
         <a href="#">Profile</a>
-        <a href="src/user_details.php">Users</a>
-        <!-- <a href="src/admin.php">Dashboard</a> -->
+        <a href="/src/user_details.php">Users</a>
+        <!-- <a href="/src/admin.php">Dashboard</a> -->
     </div>
     <h1>User Details</h1>
     <table>

@@ -19,7 +19,7 @@
             <p class="title">Login</p>
             <div class="separator"></div>
             <p class="message">Enter Necessary Details</p>
-            <form name="lform" class="lform" action="src/process_login.php" onsubmit="return vali()" method="post">
+            <form name="lform" class="lform" action="/src/process_login.php" onsubmit="return vali()" method="post">
                 <div class="control">
                     <input type="text" name="uname" placeholder="username">
                     <i class="fa fa-user"></i>
@@ -33,10 +33,10 @@
                 <input type="submit" value="Login" class="submit">
             </form>
             <div class="forgot">
-                <a href="src/forgot_password.php">Forgot Password</a>
+                <a href="/src/forgot_password.php">Forgot Password</a>
             </div>
             <div class="link">
-                <a href="src/register.php">Create an Account</a>
+                <a href="/src/register.php">Create an Account</a>
             </div>
         </div>
     </section>

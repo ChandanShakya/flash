@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <a href="src/home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="/src/home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
     <section>
         <h2>What is a Typing Speed Calculator?</h2><br>
         <p>A typing speed calculator is a tool designed to measure and
