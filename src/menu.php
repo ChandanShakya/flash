@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-	<link rel="stylesheet" href="assets/css/menu.css">
+	<link rel="stylesheet" href="/assets/css/menu.css">
 </head>
 
 <body>
@@ -15,18 +15,18 @@
         <label for="check" class="checkbtn">
             <i class="fa fa-bars"></i>
         </label>
-        <Label class="logo"><a id="home" href="src/home.php">FLASH</a></Label>
+        <Label class="logo"><a id="home" href="/src/home.php">FLASH</a></Label>
         <ul>
-            <li><a class="resize" href="src/home.php">Home</a></li>
-            <li><a class="resize" href="src/typing_test.php">Start Typing</a></li>
-            <li><a class="resize" href="src/typing_tips.php">Typing Tips</a></li>
-            <li><a class="resize" href="src/results.php">Result</a></li>
+            <li><a class="resize" href="/src/home.php">Home</a></li>
+            <li><a class="resize" href="/src/typing_test.php">Start Typing</a></li>
+            <li><a class="resize" href="/src/typing_tips.php">Typing Tips</a></li>
+            <li><a class="resize" href="/src/results.php">Result</a></li>
             <?php
     session_start();
             if (isset($_SESSION['user_id'])) {
-                echo '<li><a class="resize" href="src/home.php" id="log">Logout</a></li>';
+                echo '<li><a class="resize" href="/src/home.php" id="log">Logout</a></li>';
             } else {
-                echo '<li><a class="resize" href="src/login.php" id="sign">Login</a></li>';
+                echo '<li><a class="resize" href="/src/login.php" id="sign">Login</a></li>';
 
             }
             ?>
@@ -45,7 +45,7 @@
     });
 
     document.getElementById("log").addEventListener("click", function() {
-        fetch("src/logout.php", {  //a fetch request to the logout.php on the server using the POST method, perfromed for logout activity
+        fetch("/src/logout.php", {  //a fetch request to the logout.php on the server using the POST method, perfromed for logout activity
                 method: "POST"
             })
             .then(function(response) { //executed when the fetch request receives a response from the serve

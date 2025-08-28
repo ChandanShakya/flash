@@ -8,7 +8,7 @@ include_once 'menu.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flash</title>
-    <link href="assets/css/home.css" rel="stylesheet">
+    <link href="/assets/css/home.css" rel="stylesheet">
     <!-- <script src="home.js"></script> -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -29,19 +29,19 @@ include_once 'menu.php';
                     <a href="src/about_us.php">Learn More</a>
                 </div>
                 <div class="imgB">
-                    <img src="assets/images/bloom-man-with-headphones-is-typing-on-a-laptop.png" class="keyboard">
+                    <img src="/assets/images/bloom-man-with-headphones-is-typing-on-a-laptop.png" class="keyboard">
                 </div>
             </div>
         </section>
         <section class="second">
-            <img src="assets/images/wave1.png" class="wave">
+            <img src="/assets/images/wave1.png" class="wave">
         </section>
     </section>
     <section class="services">
         <h2>Services</h2>
         <div class="row">
             <div class="p">
-                <img src="assets/images/test1.png" id="ts">
+                <img src="/assets/images/test1.png" id="ts">
                 <h3>Typing Tests</h3>
                 <p>Flash provides timed
                     typing tests to measure your
@@ -50,7 +50,7 @@ include_once 'menu.php';
                     and accuracy.</p>
             </div>
             <div class="p">
-                <img src="assets/images/perf1.png" id="per">
+                <img src="/assets/images/perf1.png" id="per">
                 <h3>Performance Tracking</h3>
                 <p> Flash offers progress tracking
                     features to monitor your
@@ -62,7 +62,7 @@ include_once 'menu.php';
                     to achieve your goals.</p>
             </div>
             <div class="p">
-                <img src="assets/images/tips1.png">
+                <img src="/assets/images/tips1.png">
                 <h3>Typing Tips</h3>
                 <p>Flash offer typing tips and resources to
                     help you enhance your typing
@@ -74,7 +74,7 @@ include_once 'menu.php';
                     your speed and accuracy.</p>
             </div>
             <div class="p">
-                <img src="assets/images/exe.png" id="ex">
+                <img src="/assets/images/exe.png" id="ex">
                 <h3>Exercises</h3>
                 <p>Flash provide training
                     modules and practice exercises
@@ -115,7 +115,7 @@ include_once 'menu.php';
             </div>
         </section>
         <section class="lw">
-            <img src="assets/images/wave2.png" class="lwave">
+            <img src="/assets/images/wave2.png" class="lwave">
         </section>
 
     </section>

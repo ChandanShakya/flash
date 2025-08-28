@@ -22,7 +22,7 @@ $conn->close();
 <html>
 <head>
     <title>User Details</title>
-    <link rel="stylesheet" href="assets/css/user_details.css">
+    <link rel="stylesheet" href="/assets/css/user_details.css">
 </head>
 <body>
 <div class="menu">

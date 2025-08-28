@@ -6,13 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
     <title>login</title>
 </head>
 
 <body>
     <section class="side">
-        <img src="assets/images/loginP.png">
+        <img src="/assets/images/loginP.png">
     </section>
     <section class="main">
         <div class="m_container">
