@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="loginpage.css">
+    <link rel="stylesheet" href="assets/css/login.css">
     <title>login</title>
 </head>
 
 <body>
     <section class="side">
-        <img src="loginP.png">
+        <img src="assets/images/loginP.png">
     </section>
     <section class="main">
         <div class="m_container">
             <p class="title">Login</p>
             <div class="separator"></div>
             <p class="message">Enter Necessary Details</p>
-            <form name="lform" class="lform" action="logindb.php" onsubmit="return vali()" method="post">
+            <form name="lform" class="lform" action="src/process_login.php" onsubmit="return vali()" method="post">
                 <div class="control">
                     <input type="text" name="uname" placeholder="username">
                     <i class="fa fa-user"></i>
@@ -33,10 +33,10 @@
                 <input type="submit" value="Login" class="submit">
             </form>
             <div class="forgot">
-                <a href="forgotpw.php">Forgot Password</a>
+                <a href="src/forgot_password.php">Forgot Password</a>
             </div>
             <div class="link">
-                <a href="registerpage.php">Create an Account</a>
+                <a href="src/register.php">Create an Account</a>
             </div>
         </div>
     </section>

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="aboutus.css">
+    <link rel="stylesheet" href="assets/css/about_us.css">
 </head>
 
 <body>
-    <a href="home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="src/home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
     <section>
         <h2>What is a Typing Speed Calculator?</h2><br>
         <p>A typing speed calculator is a tool designed to measure and

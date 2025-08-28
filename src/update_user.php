@@ -1,5 +1,5 @@
 <?php
-require "conn.php";
+require "database_connection.php";
 
 class crudu {
     private $con;
@@ -27,7 +27,7 @@ class crudu {
         $res = mysqli_query($this->con, $uquery);
         if ($res) {
             echo '<script>alert("Successfully updated");</script>';
-            echo '<script>window.location.href = "loginpage.php";</script>';
+            echo '<script>window.location.href = "src/login.php";</script>';
             return true; 
         } else {
             return false; 

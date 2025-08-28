@@ -9,7 +9,7 @@ include_once("menu.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Test</title>
-    <link rel="stylesheet" href="typing.css">
+    <link rel="stylesheet" href="assets/css/typing.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -50,7 +50,7 @@ include_once("menu.php");
                     <p id="paragraph"></p>
                 </div>
                 <div class="content">
-                    <form id="saveForm" action="resV.php" method="POST">
+                    <form id="saveForm" action="src/save_result.php" method="POST">
                         <input type="hidden" name="wpmValue" value="">
                         <input type="hidden" name="mistakeValue" value="">
                         <input type="hidden" name="cpmValue" value="">

@@ -15,13 +15,13 @@ if (mysqli_num_rows($result) > 0) {
         if(password_verify($pass,$row['password'])){
             $_SESSION['username']= $row['uname'];
             $_SESSION['user_id'] = $row['id']; 
-            header("Location: home.php");
+            header("Location: src/home.php");
             exit();
         }
         else {
             echo "<script>
             alert('Incorrect Username or Password');
-            window.location.href = 'loginpage.php';
+            window.location.href = 'src/login.php';
             </script>";
         }
     } 
@@ -29,7 +29,7 @@ if (mysqli_num_rows($result) > 0) {
 else {
     echo "<script>
     alert('Incorrect Username or Password');
-    window.location.href = 'loginpage.php';
+    window.location.href = 'src/login.php';
     </script>";
 }
 

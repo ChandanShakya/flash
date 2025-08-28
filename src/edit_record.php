@@ -1,5 +1,5 @@
 <?php
-require "conn.php";
+require "database_connection.php";
 
 class crude {
     private $con;
@@ -28,7 +28,7 @@ class crude {
         $res = mysqli_query($this->con, $uquery);
         if ($res) {
             echo '<script>alert("Successfully updated");</script>';
-            echo '<script>window.location.href = "result.php";</script>';
+            echo '<script>window.location.href = "src/results.php";</script>';
             return true; 
         } else {
             return false; 

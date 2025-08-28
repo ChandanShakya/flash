@@ -1,5 +1,5 @@
 <?php
-require "conn.php";
+require "database_connection.php";
 
 class crudi{
     private $con;
@@ -27,7 +27,7 @@ class crudi{
 
         $res = mysqli_query($this->con, $query);
         if($res){
-            header("Location:loginpage.php");
+            header("Location:src/login.php");
         }
     }
 }

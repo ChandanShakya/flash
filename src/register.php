@@ -10,17 +10,17 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
-    <link rel="stylesheet" href="register.css">
+    <link rel="stylesheet" href="assets/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
 <body>
-    <a href="home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="src/home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
     <div class="wrapper">
         <h1>Create an Account</h1>
         <p class="message">Enter Necessary Details</p>
 
-        <form name="regform" action="insertvalue.php" method="post" onsubmit="return vali()">
+        <form name="regform" action="src/process_registration.php" method="post" onsubmit="return vali()">
             <div>
                 <input type="text" placeholder="First Name" name="fname">
                 <input type="text" placeholder="Last Name" name="lname">
@@ -33,7 +33,7 @@ session_start();
         </form>
         <p id="error_message"></p>
         <div class="already">
-            Already have an Account? <a href="loginpage.php">Login</a>
+            Already have an Account? <a href="src/login.php">Login</a>
         </div>
     </div>
     <script>

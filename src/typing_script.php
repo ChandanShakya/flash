@@ -1,5 +1,5 @@
 <?php
-require("typing.php");
+require("typing_test.php");
 ?>
 <html>
   <script>

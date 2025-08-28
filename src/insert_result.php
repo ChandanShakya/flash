@@ -1,5 +1,5 @@
 <?php
-require "conn.php";
+require "database_connection.php";
 
 class save{
     private $con;
@@ -27,7 +27,7 @@ class save{
 
         $resu = mysqli_query($this->con, $query);
         if($resu){
-            header("Location:result.php");
+            header("Location:src/results.php");
         }
     }
 
@@ -47,7 +47,7 @@ class save{
 
         $resul = mysqli_query($this->con, $query);
         if($resul){
-            header("Location:result.php");
+            header("Location:src/results.php");
         }
     }
 }

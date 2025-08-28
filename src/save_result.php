@@ -1,5 +1,5 @@
 <?php
-require "ins_result.php";
+require "insert_result.php";
 
 session_start();
 

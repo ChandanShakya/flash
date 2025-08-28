@@ -1,5 +1,5 @@
 <?php
-require "conn.php";
+require "database_connection.php";
 
 
 $db_r= new Database_conn();
@@ -24,13 +24,13 @@ $conn->close();
 <html>
 <head>
     <title>User Details</title>
-    <link rel="stylesheet" href="user_detail.css">
+    <link rel="stylesheet" href="assets/css/user_details.css">
 </head>
 <body>
 <div class="menu">
         <a href="#">Profile</a>
-        <a href="user_detail.php">Users</a>
-        <a href="admin.php">Dashboard</a>
+        <a href="src/user_details.php">Users</a>
+        <!-- <a href="src/admin.php">Dashboard</a> -->
     </div>
     <h1>User Details</h1>
     <table>

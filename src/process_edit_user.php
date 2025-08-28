@@ -1,5 +1,5 @@
 <?php
-require "edit_rec.php";
+require "edit_record.php";
 session_start();
 
 $e = new crude();

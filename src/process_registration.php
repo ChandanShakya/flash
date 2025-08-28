@@ -1,5 +1,5 @@
 <?php
- require "regi.php";
+ require "registration.php";
 
  $i = new crudi();
 
@@ -37,7 +37,7 @@ $minLength = 8;
 
 $msg = array();
 if($numrows > 0){
-    echo "<script>alert('Username has been taken.');window.location.href = 'registerpage.php';</script>";
+    echo "<script>alert('Username has been taken.');window.location.href = 'src/register.php';</script>";
     $msg[]="Username has been taken.";
 }
 else if (empty($fname) || empty($lname) || empty($uname) || empty($pass) || empty($cpass) || empty($email)) {

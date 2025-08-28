@@ -1,5 +1,5 @@
 <?php
-require "update.php";
+require "update_user.php";
 
 $u = new crudu();
 $con = $u->connect();
@@ -23,7 +23,7 @@ if (empty($uname) || empty($npass) || empty($cpass)) {
 }
 else if (!($u->usernameExists($table, $cond))) {
     echo '<script>alert("Did not find the username");</script>';
-    echo '<script>window.location.href = "forgotpw.php";</script>';
+    echo '<script>window.location.href = "src/forgot_password.php";</script>';
     $msg[]= "User not found";
 }
 else if (strlen($npass) < $minLength) {

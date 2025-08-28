@@ -9,7 +9,7 @@ include_once("menu.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
-    <link href="result.css" rel="stylesheet">
+    <link href="assets/css/results.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.3/css/dataTables.dataTables.min.css" />
@@ -41,7 +41,7 @@ include_once("menu.php");
                     echo "<p>User ID: " . $row['id'] . "</p>";
                     echo "<p>Name: " . ucfirst($fname) . " " . ucfirst($lname) . "</p>";
                     echo "<p>Email: " . $row['email'] . "</p>";
-                    echo "<p><a href=\"edit.php\" id=\"editt\"><i class=\"fa-solid fa-pen\"></i></a></p>";
+                    echo "<p><a href=\"src/edit_user.php\" id=\"editt\"><i class=\"fa-solid fa-pen\"></i></a></p>";
                 }
             }
             ?>
@@ -80,8 +80,8 @@ include_once("menu.php");
                             echo "<td>" . $row['wpm'] . "</td>";
                             echo "<td>" . $row['mistake'] . "</td>";
                             echo "<td>" . $row['cpm'] . "</td>";
-                            echo "<td><a href=\"delete_rec.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
-                            echo "<td><a href=\"download.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
+                            echo "<td><a href=\"src/delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
+                            echo "<td><a href=\"src/download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
                             echo "</tr>";
                         }
                     }

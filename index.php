@@ -1,3 +1,4 @@
 <?php
-include 'php/home.php';
+include 'src/home.php';
+?>
 
