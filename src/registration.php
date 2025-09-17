@@ -10,6 +10,7 @@ class crudi
     {
         $db = new Database_conn;
         $this->con = $db->getConnection();
+
         return $this->con;
     }
 

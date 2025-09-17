@@ -1,8 +1,9 @@
 <?php
+
 session_start();
 require 'database_connection.php';
 
-$db = new Database_conn();
+$db = new Database_conn;
 $conn = $db->getConnection();
 
 $uname = $_POST['uname'];

@@ -148,8 +148,8 @@
                 <p>Flash@gmail.com</p>
             </div>
             <div class="g" id="di" <?php if (isset($_SESSION['user_id'])) {
-                                        echo 'style="display: none;"';
-                                    } ?>>
+                echo 'style="display: none;"';
+            } ?>>
                 <h5>Sign Up for Free !!</h5>
                 <button><a href="/src/login.php">Start now <i class="fa fa-arrow-right"></i></a></button>
             </div>

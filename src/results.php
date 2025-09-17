@@ -27,74 +27,76 @@ require 'database_connection.php';
         <div id="uinfo">
             <?php
             // Check if user is logged in
-            if (!isset($_SESSION['username']) || empty($_SESSION['username'])) {
+            if (! isset($_SESSION['username']) || empty($_SESSION['username'])) {
                 echo '<script>
                     document.querySelector("section").style.display = "none";
                     document.querySelector("#msg").style.display = "block";
                 </script>';
+
                 return;
             }
 
-            $db = new Database_conn;
-            $con = $db->getConnection();
+$db = new Database_conn;
+$con = $db->getConnection();
 
-            $uname = $_SESSION['username'];
-            $sql = "Select * from user where uname ='$uname'";
-            $result = mysqli_query($con, $sql);
+$uname = $_SESSION['username'];
+$sql = "Select * from user where uname ='$uname'";
+$result = mysqli_query($con, $sql);
 
-            if (mysqli_num_rows($result) > 0) {
-                // Loop through each row and display the information
-                while ($row = mysqli_fetch_assoc($result)) {
-                    $fname = $row['fname'];
-                    $lname = $row['lname'];
-                    $_SESSION['uid'] = $row['id'];
+if (mysqli_num_rows($result) > 0) {
+    // Loop through each row and display the information
+    while ($row = mysqli_fetch_assoc($result)) {
+        $fname = $row['fname'];
+        $lname = $row['lname'];
+        $_SESSION['uid'] = $row['id'];
 
-                    echo '<h1>User Details</h1>';
-                    echo '<p>User ID: ' . $row['id'] . '</p>';
-                    echo '<p>Name: ' . ucfirst($fname) . ' ' . ucfirst($lname) . '</p>';
-                    echo '<p>Email: ' . $row['email'] . '</p>';
-                    echo '<p><a href="/src/edit_user.php" id="editt"><i class="fa-solid fa-pen"></i></a></p>';
-                }
-            } else {
-                echo '<script>
+        echo '<h1>User Details</h1>';
+        echo '<p>User ID: '.$row['id'].'</p>';
+        echo '<p>Name: '.ucfirst($fname).' '.ucfirst($lname).'</p>';
+        echo '<p>Email: '.$row['email'].'</p>';
+        echo '<p><a href="/src/edit_user.php" id="editt"><i class="fa-solid fa-pen"></i></a></p>';
+    }
+} else {
+    echo '<script>
                     document.querySelector("section").style.display = "none";
                     document.querySelector("#msg").style.display = "block";
                 </script>';
-                return;
-            }
-            ?>
+
+    return;
+}
+?>
         </div>
         <br>
 
         <!-- Performance Statistics Cards -->
         <div id="stats-cards">
             <?php
-            // First, get the data
-            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
-                $uname = $_SESSION['username'];
-                $result_query = "SELECT * FROM result WHERE uname ='$uname'";
-                $result_result = mysqli_query($con, $result_query);
-                $data = [];
-                
-                if (mysqli_num_rows($result_result) > 0) {
-                    while ($row = mysqli_fetch_assoc($result_result)) {
-                        $data[] = $row;
-                    }
-                }
-                
-                // Calculate statistics
-                $totalTests = count($data);
-                $avgWPM = $totalTests > 0 ? array_sum(array_column($data, 'wpm')) / $totalTests : 0;
-                $avgCPM = $totalTests > 0 ? array_sum(array_column($data, 'cpm')) / $totalTests : 0;
-                $bestWPM = $totalTests > 0 ? max(array_column($data, 'wpm')) : 0;
-                $bestCPM = $totalTests > 0 ? max(array_column($data, 'cpm')) : 0;
-                $totalErrors = array_sum(array_column($data, 'mistake'));
-                $accuracy = $totalTests > 0 && $totalTests * 100 > 0 ? max(0, (1 - ($totalErrors / ($totalTests * 100))) * 100) : 0;
-            } else {
-                $data = [];
-                $totalTests = $avgWPM = $avgCPM = $bestWPM = $bestCPM = $accuracy = 0;
-            }
-            ?>
+// First, get the data
+if (isset($_SESSION['username']) && ! empty($_SESSION['username'])) {
+    $uname = $_SESSION['username'];
+    $result_query = "SELECT * FROM result WHERE uname ='$uname'";
+    $result_result = mysqli_query($con, $result_query);
+    $data = [];
+
+    if (mysqli_num_rows($result_result) > 0) {
+        while ($row = mysqli_fetch_assoc($result_result)) {
+            $data[] = $row;
+        }
+    }
+
+    // Calculate statistics
+    $totalTests = count($data);
+    $avgWPM = $totalTests > 0 ? array_sum(array_column($data, 'wpm')) / $totalTests : 0;
+    $avgCPM = $totalTests > 0 ? array_sum(array_column($data, 'cpm')) / $totalTests : 0;
+    $bestWPM = $totalTests > 0 ? max(array_column($data, 'wpm')) : 0;
+    $bestCPM = $totalTests > 0 ? max(array_column($data, 'cpm')) : 0;
+    $totalErrors = array_sum(array_column($data, 'mistake'));
+    $accuracy = $totalTests > 0 && $totalTests * 100 > 0 ? max(0, (1 - ($totalErrors / ($totalTests * 100))) * 100) : 0;
+} else {
+    $data = [];
+    $totalTests = $avgWPM = $avgCPM = $bestWPM = $bestCPM = $accuracy = 0;
+}
+?>
             
             <div class="stat-card">
                 <h3><?php echo number_format($avgWPM, 1); ?></h3>
@@ -151,78 +153,80 @@ require 'database_connection.php';
                 </thead>
                 <tbody id="resultBody">
                     <?php
-                    // Display the data we already have
-                    if (!empty($data)) {
-                        foreach ($data as $row) {
-                            echo '<tr>';
-                            echo '<td>' . $row['result_id'] . '</td>';
-                            echo '<td>' . $row['date'] . '</td>';
-                            echo '<td>' . $row['level'] . '</td>';
-                            echo '<td>' . $row['wpm'] . '</td>';
-                            echo '<td>' . $row['mistake'] . '</td>';
-                            echo '<td>' . $row['cpm'] . '</td>';
-                            echo "<td><a href=\"delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
-                            echo "<td><a href=\"download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
-                            echo '</tr>';
-                        }
-                    }
+        // Display the data we already have
+        if (! empty($data)) {
+            foreach ($data as $row) {
+                echo '<tr>';
+                echo '<td>'.$row['result_id'].'</td>';
+                echo '<td>'.$row['date'].'</td>';
+                echo '<td>'.$row['level'].'</td>';
+                echo '<td>'.$row['wpm'].'</td>';
+                echo '<td>'.$row['mistake'].'</td>';
+                echo '<td>'.$row['cpm'].'</td>';
+                echo "<td><a href=\"delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
+                echo "<td><a href=\"download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
+                echo '</tr>';
+            }
+        }
 
-                    // Implementing Merge Sort to sort by CPM
-                    function mergeSort(&$arr)
-                    {
-                        if (empty($arr)) return 0;
-                        $start = microtime(true);
-                        mergeSortHelper($arr, 0, count($arr) - 1);
-                        $end = microtime(true);
+// Implementing Merge Sort to sort by CPM
+function mergeSort(&$arr)
+{
+    if (empty($arr)) {
+        return 0;
+    }
+    $start = microtime(true);
+    mergeSortHelper($arr, 0, count($arr) - 1);
+    $end = microtime(true);
 
-                        return $end - $start;
-                    }
+    return $end - $start;
+}
 
-                    function mergeSortHelper(&$arr, $left, $right)
-                    {
-                        if ($left < $right) {
-                            $middle = floor(($left + $right) / 2);
-                            mergeSortHelper($arr, $left, $middle);
-                            mergeSortHelper($arr, $middle + 1, $right);
-                            merge($arr, $left, $middle, $right);
-                        }
-                    }
+function mergeSortHelper(&$arr, $left, $right)
+{
+    if ($left < $right) {
+        $middle = floor(($left + $right) / 2);
+        mergeSortHelper($arr, $left, $middle);
+        mergeSortHelper($arr, $middle + 1, $right);
+        merge($arr, $left, $middle, $right);
+    }
+}
 
-                    function merge(&$arr, $left, $middle, $right)
-                    {
-                        $leftArr = array_slice($arr, $left, $middle - $left + 1);
-                        $rightArr = array_slice($arr, $middle + 1, $right - $middle);
+function merge(&$arr, $left, $middle, $right)
+{
+    $leftArr = array_slice($arr, $left, $middle - $left + 1);
+    $rightArr = array_slice($arr, $middle + 1, $right - $middle);
 
-                        $i = 0;
-                        $j = 0;
-                        $k = $left;
+    $i = 0;
+    $j = 0;
+    $k = $left;
 
-                        while ($i < count($leftArr) && $j < count($rightArr)) {
-                            if ($leftArr[$i]['cpm'] >= $rightArr[$j]['cpm']) {
-                                $arr[$k] = $leftArr[$i];
-                                $i++;
-                            } else {
-                                $arr[$k] = $rightArr[$j];
-                                $j++;
-                            }
-                            $k++;
-                        }
+    while ($i < count($leftArr) && $j < count($rightArr)) {
+        if ($leftArr[$i]['cpm'] >= $rightArr[$j]['cpm']) {
+            $arr[$k] = $leftArr[$i];
+            $i++;
+        } else {
+            $arr[$k] = $rightArr[$j];
+            $j++;
+        }
+        $k++;
+    }
 
-                        while ($i < count($leftArr)) {
-                            $arr[$k] = $leftArr[$i];
-                            $i++;
-                            $k++;
-                        }
+    while ($i < count($leftArr)) {
+        $arr[$k] = $leftArr[$i];
+        $i++;
+        $k++;
+    }
 
-                        while ($j < count($rightArr)) {
-                            $arr[$k] = $rightArr[$j];
-                            $j++;
-                            $k++;
-                        }
-                    }
+    while ($j < count($rightArr)) {
+        $arr[$k] = $rightArr[$j];
+        $j++;
+        $k++;
+    }
+}
 
-                    $mergeSortTime = mergeSort($data);
-                    ?>
+$mergeSortTime = mergeSort($data);
+?>
                 </tbody>
             </table>
             <div id="topCPMTable" style="display: none;">
@@ -368,7 +372,7 @@ require 'database_connection.php';
             document.getElementById('hideTopCPM').style.display = 'none';
         });
 
-        const isLoggedIn = <?php echo (isset($_SESSION['username']) && !empty($_SESSION['username'])) ? 'true' : 'false'; ?>;
+        const isLoggedIn = <?php echo (isset($_SESSION['username']) && ! empty($_SESSION['username'])) ? 'true' : 'false'; ?>;
         if (isLoggedIn) {
             document.querySelector("section").style.display = "block";
             document.querySelector("#msg").style.display = "none";

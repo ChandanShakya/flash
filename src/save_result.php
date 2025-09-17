@@ -1,4 +1,5 @@
 <?php
+
 require 'insert_result.php';
 
 session_start();
@@ -27,6 +28,3 @@ $itemm = ['uname' => $username, 'level' => $level, 'wpm' => $wpm];
 $r->insert_result($table, $item);
 
 $t->insert_test($table1, $itemm);
-
-?>
-
