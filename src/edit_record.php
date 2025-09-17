@@ -33,7 +33,7 @@ class crude
         $res = mysqli_query($this->con, $uquery);
         if ($res) {
             echo '<script>alert("Successfully updated");</script>';
-            echo '<script>window.location.href = "src/results.php";</script>';
+            echo '<script>window.location.href = "results.php";</script>';
 
             return true;
         } else {

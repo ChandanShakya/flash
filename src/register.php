@@ -15,12 +15,12 @@ session_start();
 </head>
 
 <body>
-    <a href="/src/home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
     <div class="wrapper">
         <h1>Create an Account</h1>
         <p class="message">Enter Necessary Details</p>
 
-        <form name="regform" action="/src/process_registration.php" method="post" onsubmit="return vali()">
+        <form name="regform" action="process_registration.php" method="post" onsubmit="return vali()">
             <div>
                 <input type="text" placeholder="First Name" name="fname">
                 <input type="text" placeholder="Last Name" name="lname">

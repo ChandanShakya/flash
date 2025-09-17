@@ -23,7 +23,7 @@ if (empty($uname) || empty($npass) || empty($cpass)) {
     $msg[] = 'Please enter all necessary details.';
 } elseif (! ($u->usernameExists($table, $cond))) {
     echo '<script>alert("Did not find the username");</script>';
-    echo '<script>window.location.href = "src/forgot_password.php";</script>';
+    echo '<script>window.location.href = "forgot_password.php";</script>';
     $msg[] = 'User not found';
 } elseif (strlen($npass) < $minLength) {
     $msg[] = "Password should have at least $minLength characters.";

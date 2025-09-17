@@ -10,9 +10,7 @@ class crudi
     {
         $db = new Database_conn;
         $this->con = $db->getConnection();
-
         return $this->con;
-
     }
 
     public function insert($table, $item)
@@ -32,7 +30,7 @@ class crudi
 
         $res = mysqli_query($this->con, $query);
         if ($res) {
-            header('Location:src/login.php');
+            header('Location:login.php');
         }
     }
 }

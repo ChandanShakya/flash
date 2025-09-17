@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/typing_tips.css" />
-	<link rel="stylesheet" href="/assets/css/menu.css">
+    <link rel="stylesheet" href="/assets/css/menu.css">
 </head>
-
 <body>
     <?php
     include_once 'menu.php';
@@ -26,8 +25,7 @@
                     </div>
                     <h3>Keyboard</h3>
                     <p>
-                        Purchase a new new keyboard for smooth typing.
-                        Start by typing slowly to avoid mistakes.
+                        Purchase a new keyboard for smooth typing. Start by typing slowly to minimize mistakes.
                     </p>
                 </div>
             </div>
@@ -38,8 +36,7 @@
                     </div>
                     <h3>Monitor</h3>
                     <p>
-                        Make sure for some eye protection from the uv rays of the monitor so always be prepared.
-                        Make sure u have screen guard,uv glasses.
+                        Protect your eyes from the UV rays of the monitor. Use a screen guard or UV-protective glasses for safety.
                     </p>
                 </div>
             </div>
@@ -48,10 +45,9 @@
                     <div class="icon-wrapper">
                         <i class="fas fa-chair"></i>
                     </div>
-                    <h3>Body posture</h3>
+                    <h3>Body Posture</h3>
                     <p>
-                        Find a comfortable position for your body which don't strain your back and give free typing
-                        experience to you.
+                        Find a comfortable position for your body to avoid straining your back and to enhance your typing experience.
                     </p>
                 </div>
             </div>
@@ -60,9 +56,9 @@
                     <div class="icon-wrapper">
                         <i class="fas fa-lightbulb"></i>
                     </div>
-                    <h3>Proper light</h3>
+                    <h3>Proper Lighting</h3>
                     <p>
-                        Make sure u have perfect light for your visibility to your keyboard and your surrounding.
+                        Ensure you have adequate lighting for clear visibility of your keyboard and surroundings.
                     </p>
                 </div>
             </div>
@@ -71,10 +67,9 @@
                     <div class="icon-wrapper">
                         <i class="fas fa-spray-can"></i>
                     </div>
-                    <h3>Cleaner</h3>
+                    <h3>Cleaning</h3>
                     <p>
-                        Make sure to clean your screen and keyboard regular for smooth typing and visibility and make it
-                        dust free.
+                        Regularly clean your screen and keyboard to maintain smooth typing and clear visibility. Keep them dust-free.
                     </p>
                 </div>
             </div>
@@ -83,10 +78,9 @@
                     <div class="icon-wrapper">
                         <i class="fas fa-hand"></i>
                     </div>
-                    <h3>Hand posture</h3>
+                    <h3>Hand Posture</h3>
                     <p>
-                        Your hand placement should be at the posture you are sitting,this won't let you hand get
-                        strained and improve your typing.
+                        Maintain proper hand placement that aligns with your sitting posture. This prevents hand strain and improves typing efficiency.
                     </p>
                 </div>
             </div>

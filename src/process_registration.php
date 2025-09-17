@@ -37,7 +37,7 @@ $minLength = 8;
 
 $msg = [];
 if ($numrows > 0) {
-    echo "<script>alert('Username has been taken.');window.location.href = 'src/register.php';</script>";
+    echo "<script>alert('Username has been taken.');window.location.href = 'register.php';</script>";
     $msg[] = 'Username has been taken.';
 } elseif (empty($fname) || empty($lname) || empty($uname) || empty($pass) || empty($cpass) || empty($email)) {
     $msg[] = 'Please enter all necessary details.';

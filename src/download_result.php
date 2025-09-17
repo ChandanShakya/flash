@@ -64,8 +64,8 @@
         <?php
 require 'database_connection.php';
 
-$res_id = $_GET['resu'];
-        $db = new Database_conn();
+        $res_id = $_GET['resu'];
+        $db = new Database_conn;
         $con = $db->getConnection();
 
         $sql2 = "SELECT * from download where result_id = '$res_id'";

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require 'database_connection.php';
 
@@ -19,18 +18,18 @@ if (mysqli_num_rows($result) > 0) {
         if (password_verify($pass, $row['password'])) {
             $_SESSION['username'] = $row['uname'];
             $_SESSION['user_id'] = $row['id'];
-            header('Location: src/home.php');
+            header('Location: ../index.php');
             exit();
         } else {
             echo "<script>
             alert('Incorrect Username or Password');
-            window.location.href = 'src/login.php';
+            window.location.href = 'login.php';
             </script>";
         }
     }
 } else {
     echo "<script>
     alert('Incorrect Username or Password');
-    window.location.href = 'src/login.php';
+    window.location.href = 'login.php';
     </script>";
 }

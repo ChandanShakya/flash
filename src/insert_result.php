@@ -32,7 +32,7 @@ class save
 
         $resu = mysqli_query($this->con, $query);
         if ($resu) {
-            header('Location:src/results.php');
+            header('location:results.php');
         }
     }
 
@@ -53,7 +53,7 @@ class save
 
         $resul = mysqli_query($this->con, $query);
         if ($resul) {
-            header('Location:src/results.php');
+            header('location:results.php');
         }
     }
 }

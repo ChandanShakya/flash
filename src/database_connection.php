@@ -4,11 +4,11 @@ class Database_conn
 {
     private static $host = 'localhost';
 
-    private static $user = 'flash_user';
+    private static $user = 'chandan';
 
-    private static $pass = 'flash_password123';
+    private static $pass = 'chandan';
 
-    private static $db = 'project';
+    private static $db = 'flash';
 
     private $con = null;
 

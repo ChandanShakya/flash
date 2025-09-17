@@ -23,7 +23,7 @@
     </header>
     <script>
     document.addEventListener("DOMContentLoaded",
-    function() { //fired when HTML document is completely loaded and parsed
+    function() {
         <?php if (isset($_SESSION['user_id'])) { ?>
         document.getElementById("sign").style.display = "none";
         document.getElementById("log").style.display = "flex";
@@ -34,18 +34,18 @@
     });
 
     document.getElementById("log").addEventListener("click", function() {
-        fetch("/src/logout.php", {  //a fetch request to the logout.php on the server using the POST method, perfromed for logout activity
+        fetch("/src/logout.php", {
                 method: "POST"
             })
-            .then(function(response) { //executed when the fetch request receives a response from the serve
-                if (response.ok) { //checks if the response status is within the range of 200-299, indicating a successful response
-                    location.reload(); //reloads the current page
+            .then(function(response) {
+                if (response.ok) {
+                    location.reload();
                 } else {
                     console.log(
-                    "Logout failed"); //error message to the browser console if the response status is not successful
+                    "Logout failed");
                 }
             })
-            .catch(function(error) { // executed if there is an error during the fetch request
+            .catch(function(error) {
                 console.log(error);
             });
     });

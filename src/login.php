@@ -19,7 +19,7 @@
             <p class="title">Login</p>
             <div class="separator"></div>
             <p class="message">Enter Necessary Details</p>
-            <form name="lform" class="lform" action="/src/process_login.php" onsubmit="return vali()" method="post">
+            <form name="lform" class="lform" action="process_login.php" onsubmit="return vali()" method="post">
                 <div class="control">
                     <input type="text" name="uname" placeholder="username">
                     <i class="fa fa-user"></i>

@@ -25,7 +25,7 @@ require 'database_connection.php';
     <section>
         <div id="uinfo">
             <?php
-            $db = new Database_conn();
+            $db = new Database_conn;
 $con = $db->getConnection();
 
 $uname = $_SESSION['username'];
@@ -82,8 +82,8 @@ if (mysqli_num_rows($result_result) > 0) {
         echo '<td>'.$row['wpm'].'</td>';
         echo '<td>'.$row['mistake'].'</td>';
         echo '<td>'.$row['cpm'].'</td>';
-        echo "<td><a href=\"src/delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
-        echo "<td><a href=\"src/download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
+        echo "<td><a href=\"delete_record.php?r_id={$row['result_id']}\" id=\"btn\"><i class=\"fa-solid fa-trash\"></i></a></td>";
+        echo "<td><a href=\"download_result.php?resu={$row['result_id']}\" id=\"btn1\"><i class=\"fa-solid fa-file-arrow-down\"></i></a></td>";
         echo '</tr>';
     }
 }

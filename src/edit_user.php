@@ -11,7 +11,7 @@
 <body>
     <section>
         <h1>Edit User Detail</h1>
-        <form method="post" action="/src/process_edit_user.php" onsubmit="return validate()">
+        <form method="post" action="process_edit_user.php" onsubmit="return validate()">
             <label for="fname" class="label">First Name:</label>
             <input type="text" name="fname" id="fname" placeholder="First Name">
             <br>
