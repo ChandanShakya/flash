@@ -17,22 +17,101 @@
     <?php
     include_once 'menu.php';
     ?>
-    <h2>Typing Speed Calculator</h2>
-    <div class="block">
-        <ul class="bar">
-            <li class="type">
-                <p>Start Typing!!</p>
-            </li>
-            <li>
-                <select id="level">
-                    <option value="lvl1">Level 1</option>
-                    <option value="lvl2">Level 2</option>
-                    <option value="lvl3">Level 3</option>
-                </select>
-            </li>
-        </ul>
-        <button class="reset"><i class="fa fa-rotate-right"></i></button>
+    
+    <!-- Controls and Virtual Keyboard Container -->
+    <div class="keyboard-section">
+        <!-- Left Controls -->
+        <div class="left-controls">
+            <select id="level">
+                <option value="lvl1">Level 1</option>
+                <option value="lvl2">Level 2</option>
+                <option value="lvl3">Level 3</option>
+            </select>
+        </div>
+
+        <!-- Virtual Keyboard -->
+        <div class="keyboard-container">
+            <div class="keyboard">
+                <div class="keyboard-row">
+                    <div class="key" data-key="`">~<br>`</div>
+                    <div class="key" data-key="1">!<br>1</div>
+                    <div class="key" data-key="2">@<br>2</div>
+                    <div class="key" data-key="3">#<br>3</div>
+                    <div class="key" data-key="4">$<br>4</div>
+                    <div class="key" data-key="5">%<br>5</div>
+                    <div class="key" data-key="6">^<br>6</div>
+                    <div class="key" data-key="7">&<br>7</div>
+                    <div class="key" data-key="8">*<br>8</div>
+                    <div class="key" data-key="9">(<br>9</div>
+                    <div class="key" data-key="0">)<br>0</div>
+                    <div class="key" data-key="-">_<br>-</div>
+                    <div class="key" data-key="=">+<br>=</div>
+                    <div class="key key-large" data-key="Backspace">Backspace</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="key key-large" data-key="Tab">Tab</div>
+                    <div class="key" data-key="q">Q</div>
+                    <div class="key" data-key="w">W</div>
+                    <div class="key" data-key="e">E</div>
+                    <div class="key" data-key="r">R</div>
+                    <div class="key" data-key="t">T</div>
+                    <div class="key" data-key="y">Y</div>
+                    <div class="key" data-key="u">U</div>
+                    <div class="key" data-key="i">I</div>
+                    <div class="key" data-key="o">O</div>
+                    <div class="key" data-key="p">P</div>
+                    <div class="key" data-key="[">{<br>[</div>
+                    <div class="key" data-key="]">}<br>]</div>
+                    <div class="key key-large" data-key="\">|<br>\</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="key key-large" data-key="CapsLock">Caps Lock</div>
+                    <div class="key" data-key="a">A</div>
+                    <div class="key" data-key="s">S</div>
+                    <div class="key" data-key="d">D</div>
+                    <div class="key" data-key="f">F</div>
+                    <div class="key" data-key="g">G</div>
+                    <div class="key" data-key="h">H</div>
+                    <div class="key" data-key="j">J</div>
+                    <div class="key" data-key="k">K</div>
+                    <div class="key" data-key="l">L</div>
+                    <div class="key" data-key=";">:<br>;</div>
+                    <div class="key" data-key="'">"<br>'</div>
+                    <div class="key key-large" data-key="Enter">Enter</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="key key-large" data-key="Shift">Shift</div>
+                    <div class="key" data-key="z">Z</div>
+                    <div class="key" data-key="x">X</div>
+                    <div class="key" data-key="c">C</div>
+                    <div class="key" data-key="v">V</div>
+                    <div class="key" data-key="b">B</div>
+                    <div class="key" data-key="n">N</div>
+                    <div class="key" data-key="m">M</div>
+                    <div class="key" data-key=","><</span><br>,</div>
+                    <div class="key" data-key=".">><br>.</div>
+                    <div class="key" data-key="/">?<br>/</div>
+                    <div class="key key-large" data-key="Shift">Shift</div>
+                </div>
+                <div class="keyboard-row">
+                    <div class="key key-large" data-key="Control">Ctrl</div>
+                    <div class="key key-large" data-key="Meta">Win</div>
+                    <div class="key key-large" data-key="Alt">Alt</div>
+                    <div class="key key-space" data-key=" ">Space</div>
+                    <div class="key key-large" data-key="Alt">Alt</div>
+                    <div class="key key-large" data-key="Meta">Win</div>
+                    <div class="key key-large" data-key="ContextMenu">Menu</div>
+                    <div class="key key-large" data-key="Control">Ctrl</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Controls -->
+        <div class="right-controls">
+            <button class="reset"><i class="fa fa-rotate-right"></i></button>
+        </div>
     </div>
+
     <section class="typing-test">
         <ul class="result-details">
             <li class="time">
@@ -57,7 +136,7 @@
                         <input type="hidden" name="cpmValue" value="">
                         <input type="hidden" name="levelValue" value="">
                         <input type="hidden" name="accuracy" value="">
-                        <button type="submit" id="savebtn" class="save" style="display:none">Save</button>
+                        <button type="submit" id="savebtn" class="save">Save</button>
                     </form>
                 </div>
             </div>
@@ -74,83 +153,6 @@
             </li>
         </ul>
     </section>
-
-    <!-- Virtual Keyboard -->
-    <div class="keyboard-container">
-        <div class="keyboard">
-            <div class="keyboard-row">
-                <div class="key" data-key="`">~<br>`</div>
-                <div class="key" data-key="1">!<br>1</div>
-                <div class="key" data-key="2">@<br>2</div>
-                <div class="key" data-key="3">#<br>3</div>
-                <div class="key" data-key="4">$<br>4</div>
-                <div class="key" data-key="5">%<br>5</div>
-                <div class="key" data-key="6">^<br>6</div>
-                <div class="key" data-key="7">&<br>7</div>
-                <div class="key" data-key="8">*<br>8</div>
-                <div class="key" data-key="9">(<br>9</div>
-                <div class="key" data-key="0">)<br>0</div>
-                <div class="key" data-key="-">_<br>-</div>
-                <div class="key" data-key="=">+<br>=</div>
-                <div class="key key-large" data-key="Backspace">Backspace</div>
-            </div>
-            <div class="keyboard-row">
-                <div class="key key-large" data-key="Tab">Tab</div>
-                <div class="key" data-key="q">Q</div>
-                <div class="key" data-key="w">W</div>
-                <div class="key" data-key="e">E</div>
-                <div class="key" data-key="r">R</div>
-                <div class="key" data-key="t">T</div>
-                <div class="key" data-key="y">Y</div>
-                <div class="key" data-key="u">U</div>
-                <div class="key" data-key="i">I</div>
-                <div class="key" data-key="o">O</div>
-                <div class="key" data-key="p">P</div>
-                <div class="key" data-key="[">{<br>[</div>
-                <div class="key" data-key="]">}<br>]</div>
-                <div class="key key-large" data-key="\">|<br>\</div>
-            </div>
-            <div class="keyboard-row">
-                <div class="key key-large" data-key="CapsLock">Caps Lock</div>
-                <div class="key" data-key="a">A</div>
-                <div class="key" data-key="s">S</div>
-                <div class="key" data-key="d">D</div>
-                <div class="key" data-key="f">F</div>
-                <div class="key" data-key="g">G</div>
-                <div class="key" data-key="h">H</div>
-                <div class="key" data-key="j">J</div>
-                <div class="key" data-key="k">K</div>
-                <div class="key" data-key="l">L</div>
-                <div class="key" data-key=";">:<br>;</div>
-                <div class="key" data-key="'">"<br>'</div>
-                <div class="key key-large" data-key="Enter">Enter</div>
-            </div>
-            <div class="keyboard-row">
-                <div class="key key-large" data-key="Shift">Shift</div>
-                <div class="key" data-key="z">Z</div>
-                <div class="key" data-key="x">X</div>
-                <div class="key" data-key="c">C</div>
-                <div class="key" data-key="v">V</div>
-                <div class="key" data-key="b">B</div>
-                <div class="key" data-key="n">N</div>
-                <div class="key" data-key="m">M</div>
-                <div class="key" data-key=","><</span><br>,</div>
-                <div class="key" data-key=".">><br>.</div>
-                <div class="key" data-key="/">?<br>/</div>
-                <div class="key key-large" data-key="Shift">Shift</div>
-            </div>
-            <div class="keyboard-row">
-                <div class="key key-large" data-key="Control">Ctrl</div>
-                <div class="key key-large" data-key="Meta">Win</div>
-                <div class="key key-large" data-key="Alt">Alt</div>
-                <div class="key key-space" data-key=" ">Space</div>
-                <div class="key key-large" data-key="Alt">Alt</div>
-                <div class="key key-large" data-key="Meta">Win</div>
-                <div class="key key-large" data-key="ContextMenu">Menu</div>
-                <div class="key key-large" data-key="Control">Ctrl</div>
-            </div>
-        </div>
-    </div>
 </body>
 <script>
     const paragraphs = [
@@ -162,26 +164,6 @@
         "An aunt is a bassoon from the right perspective. As far as we can estimate, some posit the melic myanmar to be less than kutcha. One cannot separate foods from blowzy bows. The scampish closet reveals itself as a sclerous llama to those who look. A hip is the skirt of a peak. Some hempy laundries are thought of simply as orchids. A gum is a trumpet from the right perspective. A freebie flight is a wrench of the mind. Some posit the croupy.",
         "A baby is a shingle from the right perspective. Before defenses, collars were only operations. Bails are gleesome relatives. An alloy is a streetcar's debt. A fighter of the scarecrow is assumed to be a leisured laundry. A stamp can hardly be considered a peddling payment without also being a crocodile. A skill is a meteorology's fan. Their scent was, in this moment, a hidden feeling. The competitor of a bacon becomes a boxlike cougar. Hey were yelling and fighting among themselves and it was impossible for any of the passengers to concentrate or rest.",
         "A broadband jam is a network of the mind. One cannot separate chickens from glowing periods. A production is a faucet from the right perspective. The lines could be said to resemble zincoid females. A deborah is a tractor's whale. Cod are elite japans. Some posit the wiglike norwegian to be less than plashy. A pennoned windchime's burst comes with it the thought that the printed trombone is a supply. Relations are restless tests.",
-        "In recent years, some teeming herons are thought of simply as numbers. Nowhere is it disputed that an unlaid fur is a marble of the mind. Far from the truth, few can name a glossy lier that isn't an ingrate bone. The chicken is a giraffe. They were lost without the abscessed leek that composed their fowl. An interviewer is a tussal bomb. Vanward maracas show us how scarfs can be doubts. Few can name an unguled punch that isn't pig. His kids were loud. They were way too loud for Jerry, especially since this was a four-hour flight. The parents didn't seem to be able, or simply didn't want, to control them.",
-        "Betty decided to write a short story and she was sure it was going to be amazing. She had already written it in her head and each time she thought about it she grinned from ear to ear knowing how wonderful it would be. She could imagine the accolades coming in and the praise she would receive for creating such a wonderful piece. She was therefore extremely frustrated when she actually sat down to write the short story and the story that was so beautiful inside her head refused to come out that way on paper.",
-        "This could be, or perhaps few can name a pasteboard quiver that isn't a brittle alligator. A swordfish is a death's numeric. Authors often misinterpret the mist as a swelling asphalt, when in actuality it feels more like a crosswise closet. Some posit the tonal brother-in-law to be less than newborn. We know that the sizes could be said to resemble sleepwalk cycles. Before seasons, supplies were only fighters.",
-        "The vision of an attempt becomes a lawny output. Dibbles are mis womens. The olden penalty reveals itself as a bustled field to those who look. Few can name a chalky force that isn't a primate literature. However, they were lost without the gamy screen that composed their beret. Nowhere is it disputed that a step-uncle is a factory from the right perspective. One cannot separate paints from dreary windows.",
-        "She was in a hurry. Not the standard hurry when you're in a rush to get someplace, but a frantic hurry. The type of hurry where a few seconds could mean life or death. She raced down the road ignoring speed limits and weaving between cars. She was only a few minutes away when traffic came to a dead standstill on the road ahead. It was a simple green chair. There was nothing extraordinary about it or so it seemed.",
-        "Debbie put her hand into the hole, sliding her hand down as far as her arm could reach. She wiggled her fingers hoping to touch something, but all she felt was air. She shifted the weight of her body to try and reach an inch or two more down the hole. Her fingers still touched nothing but air.Do you really listen when you are talking with someone? I have a friend who listens in an unforgiving way.",
-        "She actually takes every word you say as being something important and when you have a friend that listens like that, words take on a whole new meaning. Their stew was, in this moment. It was far better for him to stay on the sidelines and observe. He kept yelling this to himself inside his head as he walked over to the couple and punched the man in the face. God said: Out on Highway 61.He is good at eating pickles and telling women about his emotional problems.",
-        "She thought if she could just get a little rest the entire incident might make a little more sense. What we don't know for sure is whether. It was due to this common and unassuming appearance that few people actually stopped to sit in it and discover its magical powers. At that moment he read the random paragraph and realized it was about random paragraphs and his world would never be the same.",
-        "His parents continued to question him. He didn't know what to say to them since they refused to believe the truth. He explained again and again, and they dismissed his explanation as a figment of his imagination. There was no way that grandpa, who had been dead for five years, could have told him where the treasure had been hidden. Of course, it didn't help that grandpa was roaring with laughter in the chair next to him as he tried to explain once again how he'd found it.",
-        "I'm heading back to Colorado tomorrow after being down in Santa Barbara over the weekend for the festival there. I will be making October plans once there and will try to arrange so I'm back here for the birthday if possible. I'll let you know as soon as I know the doctor's appointment schedule and my flight plans.They argue. While the argument seems to be different the truth is it's always the same. Yes, the topic may be different or the circumstances, but when all said and done, it all came back to the same thing. ",
-        "She closed her eyes and then opened them again. What she was seeing just didn't make sense. She shook her head seeing if that would help. It didn't. Although it seemed beyond reality, there was no denying she was witnessing a large formation of alien spaceships filling the sky.Where do they get a random paragraph? he wondered as he clicked the generate button. Do they just write a random paragraph or do they get it somewhere? At that moment he read the random paragraph and realized it was about random paragraphs and his world would never be the same.",
-        "A broadband jam is a network of the mind. One cannot separate chickens from glowing periods. A production is a faucet from the right perspective. The lines could be said to resemble zincoid females. A deborah is a tractor's whale. Cod are elite japans. Some posit the wiglike norwegian to be less than plashy. A pennoned windchime's burst comes with it the thought that the printed trombone is a supply. Relations are restless tests. I do wonder why people hate their grey hair so much! I think grey hair is a gift from the moon! When the moon laughs, her eyes produce tears of joy that fall to the earth and onto the tops of people's heads!",
-        "There was something special about this little creature. Donna couldn't quite pinpoint what it was, but she knew with all her heart that it was true. It wasn't a matter of if she was going to try and save it, but a matter of how she was going to save it. She went back to the car to get a blanket and when she returned the creature was gone.It was a simple green chair. There was nothing extraordinary about it or so it seemed. It was the type of chair one would pass without even noticing it was there, let alone what the actual color of it was.",
-        "Betty decided to write a short story and she was sure it was going to be amazing. She had already written it in her head and each time she thought about it she grinned from ear to ear knowing how wonderful it would be. She could imagine the accolades coming in and the praise she would receive for creating such a wonderful piece. She was therefore extremely frustrated when she actually sat down to write the short story and the story that was so beautiful inside her head refused to come out that way on paper.",
-        "Do you really listen when you are talking with someone? I have a friend who listens in an unforgiving way. She actually takes every word you say as being something important and when you have a friend that listens like that, words take on a whole new meaning.God said: Abraham, kill me a son. Abe said: Man, you must be putting me on. God said: No. Abe said: What God said: You can do what you want Abe but the next time you see me coming you'd better run. Abe said: Where you want this killing done?",
-        "You have left a trail of breadcrumb clues which will lead you to the place where your purpose and passion have already met and are simply waiting for you to find them.You have left a trail of breadcrumb clues which will lead you to the place where your purpose and passion have already met and are simply waiting for you to find them. There was something special about this little creature. Donna couldn't quite pinpoint what it was, but she knew with all her heart that it was true.",
-        " It wasn't a matter of if she was going to try and save it, but a matter of how she was going to save it. She went back to the car to get a blanket and when she returned the creature was gone. It was due to this common and unassuming appearance that few people actually stopped to sit in it and discover its magical powers. They both knew it, but neither has the courage or strength to address the underlying issue. So they continue to argue.",
-        "A broadband jam is a network of the mind. One cannot separate chickens from glowing periods. A production is a faucet from the right perspective. The lines could be said to resemble zincoid females. A deborah is a tractor's whale. Cod are elite japans. Some posit the wiglike norwegian to be less than plashy. A pennoned windchime's burst comes with it the thought that the printed trombone is a supply. Relations are restless tests.",
-        "I do wonder why people hate their grey hair so much! I think grey hair is a gift from the moon! When the moon laughs, her eyes produce tears of joy that fall to the earth and onto the tops of people's heads! It was the type of chair one would pass without even noticing it was there, let alone what the actual color of it was.It was the type of chair one would pass without even noticing it was there, let alone what the actual color of it was.",
-        "It was that terrifying feeling you have as you tightly hold the covers over you with the knowledge that there is something hiding under your bed. You want to look, but you don't at the same time. You're frozen with fear and unable to act. That's where she found herself and she didn't know what to do next. Where do they get a random paragraph? he wondered as he clicked the generate button. Do they just write a random paragraph or do they get it somewhere?",
     ];
 
 
@@ -203,76 +185,116 @@
     var mistake = 0;
     var isTyping = 0;
     var errorPositions = new Set(); // Track error positions
+    var isResetting = false; // Add flag to prevent multiple resets
+    var lastParagraphIndex = -1; // Track last used paragraph
 
     document.addEventListener("DOMContentLoaded", function() { //fired when HTML document is completely loaded and parsed
         <?php if (isset($_SESSION['user_id'])) { ?>
             isLoggedIn = "true";
-            document.getElementById("level").style.display = "flex";
             updateMaxTime();
         <?php } else { ?>
             isLoggedIn = "false";
-            document.getElementById("level").style.display = "none";
-            max = 65;
-            counter.innerHTML = max;
-            reset();
+            updateMaxTime();
         <?php } ?>
     });
+
+    function ParaGen() {
+        let random;
+        // Ensure we get a different paragraph than the last one
+        do {
+            random = Math.floor(Math.random() * paragraphs.length);
+        } while (random === lastParagraphIndex && paragraphs.length > 1);
+        
+        lastParagraphIndex = random;
+        const selectedParagraph = paragraphs[random];
+        
+        // Limit paragraph length for better performance
+        const maxLength = 300;
+        const trimmedParagraph = selectedParagraph.length > maxLength 
+            ? selectedParagraph.substring(0, maxLength).trim() 
+            : selectedParagraph;
+        
+        // Clear existing content first
+        para.innerHTML = '';
+        
+        // Create spans and add them directly
+        trimmedParagraph.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            if (index === 0) {
+                span.classList.add('active');
+            }
+            para.appendChild(span);
+        });
+        
+        // Ensure focus handlers are set
+        document.removeEventListener("keydown", focusInput);
+        para.removeEventListener("click", focusInput);
+        document.addEventListener("keydown", focusInput);
+        para.addEventListener("click", focusInput);
+    }
+
+    // Separate focus function to avoid memory leaks
+    function focusInput() {
+        inputField.focus();
+    }
 
     function updateMaxTime() {
         var selectedValue = level.value;
         if (selectedValue === "lvl1") {
             max = 60;
-            counter.innerHTML = max;
-            reset();
         } else if (selectedValue === "lvl2") {
             max = 50;
-            counter.innerHTML = max;
-            reset();
         } else if (selectedValue === "lvl3") {
-            max = 2;
-            counter.innerHTML = max;
-            reset();
+            max = 30;
         }
+        
+        timeleft = max;
+        counter.innerHTML = max;
+        reset();
     }
 
     //.classList is a property that returns a collection of the CSS classes applied to the element.
 
-    function ParaGen() {
-        const random = Math.floor(paragraphs.length * Math.random()); //selecting random sentence
-        para.innerHTML = "";
-        paragraphs[random].split("").forEach((char) => {
-            //split into  array of individual character
-            let span = `<span>${char}</span>`; //Template literals enable you to embed expressions within the string
-            para.innerHTML += span;
-        });
-        para.querySelectorAll("span")[0].classList.add(
-            "active"); //select span node 0 and add css to active class of element
-        document.addEventListener("keydown", () => inputField.focus()); //when key is pressed calls focus method
-        para.addEventListener("click", () => inputField.focus()); //when clicked para will be focused
-
+    function reset() {
+        if (isResetting) return; // Prevent multiple resets
+        isResetting = true;
+        
+        // Add loading state to reset button
+        retype.classList.add('loading');
+        
+        // Clear timer first
+        clearInterval(timer);
+        
+        // Reset all variables
+        timeleft = max;
+        charIndex = 0;
+        mistake = 0;
+        isTyping = 0;
+        errorPositions.clear();
+        
+        // Reset UI elements
+        inputField.value = "";
+        inputField.removeAttribute('disabled');
+        counter.innerText = timeleft;
+        wpm.innerText = 0;
+        mistakeV.innerText = 0;
+        cpm.innerText = 0;
+        save.style.display = "none";
+        
+        // Generate new paragraph immediately (remove the isResetting check block)
+        ParaGen();
+        
+        // Focus input field and remove loading state with a small delay
+        setTimeout(() => {
+            inputField.focus();
+            retype.classList.remove('loading');
+            isResetting = false;
+        }, 100);
     }
 
-    $(document).ready(function() {
-        $('#savebtn').click(function() {
-            var wpmValue = $(".wpm span").text();
-            var mistakeValue = $(".mistake span").text();
-            var cpmValue = $(".cpm span").text();
-            var levelValue = $("#level").val();
-            var accuracy = ((charIndex - mistake) / (charIndex)) * 100;
+    //.classList is a property that returns a collection of the CSS classes applied to the element.
 
-            // input[name=''] is a descendant selector
-            $("#saveForm input[name='wpmValue']").val(wpmValue); //select form, select input element with name, set value of selected input
-            //.val() is used to set or get value of form element
-            $("#saveForm input[name='mistakeValue']").val(mistakeValue);
-            $("#saveForm input[name='cpmValue']").val(cpmValue);
-            $("#saveForm input[name='levelValue']").val(levelValue);
-            $("#saveForm input[name='accuracy']").val(accuracy);
-            $("#saveForm").submit();
-        });
-    });
-
-
-    // Modify the initial_time function
     function initial_time() {
         if (timeleft > 0) {
             timeleft--;
@@ -357,7 +379,7 @@
     });
 
     function typing() {
-        if (timeleft <= 0) {
+        if (timeleft <= 0 || isResetting) {
             inputField.setAttribute('disabled', 'disabled');
             return;
         }
@@ -397,19 +419,21 @@
             isTyping = true;
         }
 
-        // Update character styling
-        keys.forEach((span, index) => {
-            span.classList.remove("correct", "incorrect", "active");
-            if (index < charIndex) {
-                if (errorPositions.has(index)) {
-                    span.classList.add("incorrect");
-                } else {
-                    span.classList.add("correct");
+        // Update character styling - ensure we have spans
+        if (keys.length > 0) {
+            keys.forEach((span, index) => {
+                span.classList.remove("correct", "incorrect", "active");
+                if (index < charIndex) {
+                    if (errorPositions.has(index)) {
+                        span.classList.add("incorrect");
+                    } else {
+                        span.classList.add("correct");
+                    }
+                } else if (index === charIndex) {
+                    span.classList.add("active");
                 }
-            } else if (index === charIndex) {
-                span.classList.add("active");
-            }
-        });
+            });
+        }
 
         // Calculate WPM and CPM
         updateResults();
@@ -438,23 +462,28 @@
         }
     }
 
-    function reset() {
-        ParaGen();
-        clearInterval(timer);
-        timeleft = max;
-        charIndex = mistake = isTyping = 0;
-        errorPositions.clear();
-        inputField.value = "";
-        counter.innerText = timeleft;
-        wpm.innerText = 0;
-        mistakeV.innerText = 0;
-        cpm.innerText = 0;
-        inputField.removeAttribute('disabled');
-    }
+    $(document).ready(function() {
+        $('#savebtn').click(function() {
+            var wpmValue = $(".wpm span").text();
+            var mistakeValue = $(".mistake span").text();
+            var cpmValue = $(".cpm span").text();
+            var levelValue = $("#level").val();
+            var accuracy = ((charIndex - mistake) / (charIndex)) * 100;
+
+            // input[name=''] is a descendant selector
+            $("#saveForm input[name='wpmValue']").val(wpmValue); //select form, select input element with name, set value of selected input
+            //.val() is used to set or get value of form element
+            $("#saveForm input[name='mistakeValue']").val(mistakeValue);
+            $("#saveForm input[name='cpmValue']").val(cpmValue);
+            $("#saveForm input[name='levelValue']").val(levelValue);
+            $("#saveForm input[name='accuracy']").val(accuracy);
+            $("#saveForm").submit();
+        });
+    });
 
     ParaGen();
     inputField.addEventListener("input", typing);
-    retype.addEventListener("click", reset);
+    retype.addEventListener("click", reset); // Use direct reset handler
 
     level.addEventListener("change", function() {
         updateMaxTime();
