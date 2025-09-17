@@ -1,4 +1,3 @@
-
     <header>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
@@ -16,20 +15,17 @@
                 echo '<li><a class="resize" href="/src/home.php" id="log">Logout</a></li>';
             } else {
                 echo '<li><a class="resize" href="/src/login.php" id="sign">Login</a></li>';
-
             }
             ?>
         </ul>
     </header>
     <script>
-    document.addEventListener("DOMContentLoaded",
-    function() {
+    document.addEventListener("DOMContentLoaded", function() {
+        let isLoggedIn = false;
         <?php if (isset($_SESSION['user_id'])) { ?>
-        document.getElementById("sign").style.display = "none";
-        document.getElementById("log").style.display = "flex";
+        isLoggedIn = true;
         <?php } else { ?>
-        document.getElementById("log").style.display = "none";
-        document.getElementById("sign").style.display = "flex";
+        isLoggedIn = false;
         <?php } ?>
     });
 
