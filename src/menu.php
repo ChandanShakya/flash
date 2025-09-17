@@ -10,7 +10,7 @@
             <li><a class="resize" href="/src/typing_tips.php">Typing Tips</a></li>
             <li><a class="resize" href="/src/results.php">Result</a></li>
             <?php
-    session_start();
+            session_start();
             if (isset($_SESSION['user_id'])) {
                 echo '<li><a class="resize" href="/src/home.php" id="log">Logout</a></li>';
             } else {
@@ -20,29 +20,29 @@
         </ul>
     </header>
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let isLoggedIn = false;
-        <?php if (isset($_SESSION['user_id'])) { ?>
-        isLoggedIn = true;
-        <?php } else { ?>
-        isLoggedIn = false;
-        <?php } ?>
-    });
+        document.addEventListener("DOMContentLoaded", function() {
+            let isLoggedIn = false;
+            <?php if (isset($_SESSION['user_id'])) { ?>
+                isLoggedIn = true;
+            <?php } else { ?>
+                isLoggedIn = false;
+            <?php } ?>
+        });
 
-    document.getElementById("log").addEventListener("click", function() {
-        fetch("/src/logout.php", {
-                method: "POST"
-            })
-            .then(function(response) {
-                if (response.ok) {
-                    location.reload();
-                } else {
-                    console.log(
-                    "Logout failed");
-                }
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    });
+        document.getElementById("log").addEventListener("click", function() {
+            fetch("/src/logout.php", {
+                    method: "POST"
+                })
+                .then(function(response) {
+                    if (response.ok) {
+                        location.reload();
+                    } else {
+                        console.log(
+                            "Logout failed");
+                    }
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
     </script>
