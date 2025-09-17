@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Typing Test</title>
     <link rel="stylesheet" href="../assets/css/typing.css">
-	<link rel="stylesheet" href="../assets/css/menu.css">
+    <link rel="stylesheet" href="../assets/css/menu.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
@@ -74,6 +74,83 @@
             </li>
         </ul>
     </section>
+
+    <!-- Virtual Keyboard -->
+    <div class="keyboard-container">
+        <div class="keyboard">
+            <div class="keyboard-row">
+                <div class="key" data-key="`">~<br>`</div>
+                <div class="key" data-key="1">!<br>1</div>
+                <div class="key" data-key="2">@<br>2</div>
+                <div class="key" data-key="3">#<br>3</div>
+                <div class="key" data-key="4">$<br>4</div>
+                <div class="key" data-key="5">%<br>5</div>
+                <div class="key" data-key="6">^<br>6</div>
+                <div class="key" data-key="7">&<br>7</div>
+                <div class="key" data-key="8">*<br>8</div>
+                <div class="key" data-key="9">(<br>9</div>
+                <div class="key" data-key="0">)<br>0</div>
+                <div class="key" data-key="-">_<br>-</div>
+                <div class="key" data-key="=">+<br>=</div>
+                <div class="key key-large" data-key="Backspace">Backspace</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key key-large" data-key="Tab">Tab</div>
+                <div class="key" data-key="q">Q</div>
+                <div class="key" data-key="w">W</div>
+                <div class="key" data-key="e">E</div>
+                <div class="key" data-key="r">R</div>
+                <div class="key" data-key="t">T</div>
+                <div class="key" data-key="y">Y</div>
+                <div class="key" data-key="u">U</div>
+                <div class="key" data-key="i">I</div>
+                <div class="key" data-key="o">O</div>
+                <div class="key" data-key="p">P</div>
+                <div class="key" data-key="[">{<br>[</div>
+                <div class="key" data-key="]">}<br>]</div>
+                <div class="key key-large" data-key="\">|<br>\</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key key-large" data-key="CapsLock">Caps Lock</div>
+                <div class="key" data-key="a">A</div>
+                <div class="key" data-key="s">S</div>
+                <div class="key" data-key="d">D</div>
+                <div class="key" data-key="f">F</div>
+                <div class="key" data-key="g">G</div>
+                <div class="key" data-key="h">H</div>
+                <div class="key" data-key="j">J</div>
+                <div class="key" data-key="k">K</div>
+                <div class="key" data-key="l">L</div>
+                <div class="key" data-key=";">:<br>;</div>
+                <div class="key" data-key="'">"<br>'</div>
+                <div class="key key-large" data-key="Enter">Enter</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key key-large" data-key="Shift">Shift</div>
+                <div class="key" data-key="z">Z</div>
+                <div class="key" data-key="x">X</div>
+                <div class="key" data-key="c">C</div>
+                <div class="key" data-key="v">V</div>
+                <div class="key" data-key="b">B</div>
+                <div class="key" data-key="n">N</div>
+                <div class="key" data-key="m">M</div>
+                <div class="key" data-key=","><</span><br>,</div>
+                <div class="key" data-key=".">><br>.</div>
+                <div class="key" data-key="/">?<br>/</div>
+                <div class="key key-large" data-key="Shift">Shift</div>
+            </div>
+            <div class="keyboard-row">
+                <div class="key key-large" data-key="Control">Ctrl</div>
+                <div class="key key-large" data-key="Meta">Win</div>
+                <div class="key key-large" data-key="Alt">Alt</div>
+                <div class="key key-space" data-key=" ">Space</div>
+                <div class="key key-large" data-key="Alt">Alt</div>
+                <div class="key key-large" data-key="Meta">Win</div>
+                <div class="key key-large" data-key="ContextMenu">Menu</div>
+                <div class="key key-large" data-key="Control">Ctrl</div>
+            </div>
+        </div>
+    </div>
 </body>
 <script>
     const paragraphs = [
@@ -125,8 +202,9 @@
     var charIndex = 0;
     var mistake = 0;
     var isTyping = 0;
+    var errorPositions = new Set(); // Track error positions
 
-    document.addEventListener("DOMContentLoaded", function () { //fired when HTML document is completely loaded and parsed
+    document.addEventListener("DOMContentLoaded", function() { //fired when HTML document is completely loaded and parsed
         <?php if (isset($_SESSION['user_id'])) { ?>
             isLoggedIn = "true";
             document.getElementById("level").style.display = "flex";
@@ -174,8 +252,8 @@
 
     }
 
-    $(document).ready(function () {
-        $('#savebtn').click(function () {
+    $(document).ready(function() {
+        $('#savebtn').click(function() {
             var wpmValue = $(".wpm span").text();
             var mistakeValue = $(".mistake span").text();
             var cpmValue = $(".cpm span").text();
@@ -253,6 +331,31 @@
         return dp[len1][len2]; // The edit distance
     }
 
+    // Keyboard highlighting functions
+    function highlightKey(key) {
+        const keyElement = document.querySelector(`[data-key="${key}"]`);
+        if (keyElement) {
+            keyElement.classList.add('active-key');
+            setTimeout(() => {
+                keyElement.classList.remove('active-key');
+            }, 150);
+        }
+    }
+
+    // Handle keydown events for keyboard highlighting
+    document.addEventListener('keydown', function(e) {
+        let key = e.key;
+
+        // Handle special keys
+        if (key === ' ') key = ' ';
+        else if (key.length === 1) key = key.toLowerCase();
+
+        highlightKey(key);
+
+        // Focus input field
+        inputField.focus();
+    });
+
     function typing() {
         if (timeleft <= 0) {
             inputField.setAttribute('disabled', 'disabled');
@@ -261,17 +364,32 @@
 
         let keys = para.querySelectorAll("span");
         let typedText = inputField.value;
-        let originalText = para.innerText.substring(0, typedText.length);
-
-        // Calculate Levenshtein distance
-        let distance = levenshteinDistance(typedText, originalText);
-
-        // Update mistake count
-        mistake = distance;
-        mistakeV.innerText = mistake;
+        let originalText = para.innerText;
 
         // Update character index
         charIndex = typedText.length;
+
+        // Clear previous error positions for current length
+        if (charIndex < errorPositions.size) {
+            errorPositions.forEach(pos => {
+                if (pos >= charIndex) {
+                    errorPositions.delete(pos);
+                }
+            });
+        }
+
+        // Check for errors at current position
+        for (let i = 0; i < typedText.length && i < originalText.length; i++) {
+            if (typedText[i] !== originalText[i]) {
+                errorPositions.add(i);
+            } else {
+                errorPositions.delete(i);
+            }
+        }
+
+        // Update mistake count
+        mistake = errorPositions.size;
+        mistakeV.innerText = mistake;
 
         // Handle timer
         if (!isTyping && charIndex > 0) {
@@ -283,10 +401,10 @@
         keys.forEach((span, index) => {
             span.classList.remove("correct", "incorrect", "active");
             if (index < charIndex) {
-                if (span.innerText === typedText[index]) {
-                    span.classList.add("correct");
-                } else {
+                if (errorPositions.has(index)) {
                     span.classList.add("incorrect");
+                } else {
+                    span.classList.add("correct");
                 }
             } else if (index === charIndex) {
                 span.classList.add("active");
@@ -325,18 +443,20 @@
         clearInterval(timer);
         timeleft = max;
         charIndex = mistake = isTyping = 0;
+        errorPositions.clear();
         inputField.value = "";
         counter.innerText = timeleft;
         wpm.innerText = 0;
         mistakeV.innerText = 0;
         cpm.innerText = 0;
+        inputField.removeAttribute('disabled');
     }
 
     ParaGen();
     inputField.addEventListener("input", typing);
     retype.addEventListener("click", reset);
 
-    level.addEventListener("change", function () {
+    level.addEventListener("change", function() {
         updateMaxTime();
     });
 </script>

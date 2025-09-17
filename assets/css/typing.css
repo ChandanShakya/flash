@@ -4,21 +4,25 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body {
     height: 100vh;
     background: rgb(217, 231, 217);
 }
+
 section {
     display: flex;
     align-items: center;
     padding: 10px;
     justify-content: center;
 }
+
 .typing-test {
     display: flex;
     align-items: flex-start;
     gap: 20px;
 }
+
 .block {
     display: flex;
     width: 500px;
@@ -49,9 +53,10 @@ section {
 .block ul li p {
     font-size: 25px;
 }
+
 h2 {
     text-align: center;
-    padding: 100px;
+    padding: 30px;
     color: #000;
 }
 
@@ -88,7 +93,8 @@ h2::before {
     z-index: -999;
     position: absolute;
 }
-.save{
+
+.save {
     outline: none;
     border: none;
     width: 105px;
@@ -102,10 +108,12 @@ h2::before {
     background: none;
     display: none;
 }
-.save:hover{
+
+.save:hover {
     background-color: white;
     color: #000;
 }
+
 .wrapper .content-box {
     padding: 13px 20px 0;
     border-radius: 10px;
@@ -170,14 +178,15 @@ h2::before {
     /* border-top: 3px solid #FFFFFF; */
 
 }
+
 #level {
     background-color: #f2f2f2;
     color: #333;
     border-radius: 10px;
     padding: 3px;
     font-size: 13px;
-  }
-  
+}
+
 .block .reset {
     outline: none;
     border: none;
@@ -208,12 +217,14 @@ h2::before {
     list-style: none;
     padding: 0;
     margin-top: 20px;
-    gap: 20px; /* Add gap between cards */
+    gap: 20px;
+    /* Add gap between cards */
     flex-direction: column;
 }
 
 .result-details li {
-    flex: 1; /* Make each card take equal space */
+    flex: 1;
+    /* Make each card take equal space */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -233,7 +244,8 @@ h2::before {
     font-size: 1.5rem;
     font-weight: 600;
     color: #000;
-    margin-top: 10px; /* Add space between label and value */
+    margin-top: 10px;
+    /* Add space between label and value */
 }
 
 li span b {
@@ -244,7 +256,7 @@ li:not(:first-child) span {
     font-weight: 500;
 }
 
-@media screen and (min-width: 518px) and  (max-width: 745px) {
+@media screen and (min-width: 518px) and (max-width: 745px) {
     .wrapper {
         padding: 20px;
     }
@@ -280,31 +292,189 @@ li:not(:first-child) span {
     .wrapper .content-box {
         padding: 10px 15px 0;
     }
+
     .result-details li {
         margin-bottom: 10px;
     }
+
     .typing-text p {
         font-size: 15px;
     }
+
     h2 {
         font-size: 1em;
         padding: 50px;
     }
+
     .block {
         width: 250px;
         padding: 5px;
         height: 60px;
     }
+
     .block ul li p {
         font-size: 15px;
     }
+
     .block .reset {
         width: 50px;
         color: #FFFFFF;
         padding: 5px 10px;
         font-size: 15px;
     }
+
     #level {
         font-size: 10px;
-      }
+    }
+}
+
+/* Virtual Keyboard Styles */
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.keyboard {
+    background: #2c3e50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    gap: 4px;
+}
+
+.key {
+    background: #34495e;
+    color: #ecf0f1;
+    border: 2px solid #4a5f7a;
+    border-radius: 6px;
+    padding: 12px;
+    min-width: 45px;
+    min-height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    text-align: center;
+    line-height: 1.2;
+    box-shadow: 0 3px 0 #2c3e50, 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.key:hover {
+    background: #4a6741;
+    transform: translateY(-1px);
+}
+
+.key.active-key {
+    background: #0b5510 !important;
+    color: #fff !important;
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 #2c3e50, 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.key-large {
+    min-width: 70px;
+    font-size: 10px;
+}
+
+.key-space {
+    min-width: 200px;
+}
+
+/* Special key styling */
+.key[data-key="Backspace"] {
+    min-width: 90px;
+}
+
+.key[data-key="Tab"] {
+    min-width: 70px;
+}
+
+.key[data-key="CapsLock"] {
+    min-width: 85px;
+}
+
+.key[data-key="Enter"] {
+    min-width: 90px;
+}
+
+.key[data-key="Shift"] {
+    min-width: 100px;
+}
+
+.key[data-key="Control"],
+.key[data-key="Alt"],
+.key[data-key="Meta"] {
+    min-width: 60px;
+}
+
+/* Responsive keyboard */
+@media (max-width: 768px) {
+    .keyboard {
+        padding: 15px;
+        transform: scale(0.8);
+    }
+    
+    .key {
+        min-width: 35px;
+        min-height: 35px;
+        padding: 8px;
+        font-size: 10px;
+    }
+    
+    .key-large {
+        min-width: 55px;
+        font-size: 8px;
+    }
+    
+    .key-space {
+        min-width: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .keyboard {
+        transform: scale(0.6);
+        padding: 10px;
+    }
+    
+    .keyboard-container {
+        padding: 10px;
+        margin-top: 20px;
+    }
+}
+
+/* Enhanced typing text styling */
+.typing-text p span.incorrect {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.2);
+    border-radius: 3px;
+}
+
+.typing-text p span.correct {
+    color: #27ae60;
+    background-color: rgba(39, 174, 96, 0.1);
+    border-radius: 3px;
+}
+
+.typing-text p span.active::before {
+    background: #0b5510;
+    height: 3px;
+    animation: blink 1s ease-in-out infinite;
+}
+
+/* Smooth transitions for better UX */
+.typing-text p span {
+    transition: all 0.1s ease;
 }
