@@ -15,6 +15,7 @@
         <img src="/assets/images/loginP.png">
     </section>
     <section class="main">
+        <a href="/src/home.php" class="home-btn"><i class="fa fa-home"></i></a>
         <div class="m_container">
             <p class="title">Login</p>
             <div class="separator"></div>

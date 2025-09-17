@@ -15,7 +15,8 @@ session_start();
 </head>
 
 <body>
-    <a href="home.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="/src/login.php" class="arrow"><i id="icon" class="fa fa-arrow-left"></i></a>
+    <a href="/src/home.php" class="home-btn"><i class="fa fa-home"></i></a>
     <div class="wrapper">
         <h1>Create an Account</h1>
         <p class="message">Enter Necessary Details</p>

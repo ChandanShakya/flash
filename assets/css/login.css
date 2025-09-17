@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: black;
 }
 
 body {
@@ -16,6 +15,7 @@ body {
 
 .main {
     background-color: gainsboro;
+    position: relative;
 }
 
 section {
@@ -161,6 +161,31 @@ button:hover {
 .main .forgot a:hover{
     text-transform: uppercase;
 }
+
+.home-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #0b5510;
+    color: white !important;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 18px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.home-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
 @media(max-width: 780px) {
     body {
         display: flex;
@@ -191,5 +216,17 @@ button:hover {
         font-size: 1em;
         letter-spacing: 1px;
         
+    }
+    .home-btn {
+        top: 15px;
+        right: 15px;
+        font-size: 16px;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .main {
+        position: relative;
+        // ...existing code...
     }
 }

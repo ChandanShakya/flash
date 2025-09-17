@@ -6,66 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
-    <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    body {
-        background-color: gainsboro;
-    }
-
-    section {
-        width: 350px;
-        height: auto;
-        padding: 2rem 1rem;
-        margin: 250px auto;
-        background-color: white;
-        border-radius: 10px;
-        text-align: center;
-        box-shadow: 0 20px 35px rgba(0, 0, 0, 0)
-    }
-
-    h1 {
-        font-size: 2rem;
-        color: #0b5510;
-        margin-bottom: 1.2rem;
-    }
-
-    form input {
-        width: 92%;
-        outline: none;
-        border: 1px solid white;
-        padding: 12px 20px;
-        margin-bottom: 10px;
-        border-radius: 20px;
-        background: rgb(236, 234, 234);
-        margin-top: 10px;
-    }
-
-    .reset {
-        font-size: 1rem;
-        padding: 10px 0;
-        width: 50%;
-        cursor: pointer;
-        color: white;
-        background-color: #0b5510;
-    }
-
-    .label {
-        font-size: 20px;
-        color: #0b5510;
-    }
-
-    .errorm {
-        color: red;
-    }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/assets/css/forgot_password.css">
 </head>
 
 <body>
+    <a href="/src/login.php" class="nav-btn back-btn"><i class="fa fa-arrow-left"></i></a>
+    <a href="/src/home.php" class="nav-btn home-btn"><i class="fa fa-home"></i></a>
     <section>
         <h1>Reset Password</h1>
         <form method="post" action="process_password_reset.php" onsubmit="return validate()">
